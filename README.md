@@ -35,7 +35,7 @@ $ git merge master
 $ cp -r resources/public/* docs/
 $ vim docs/index.html
     Fix src of app.js
-$ git add .
+$ git add docs
 $ git com -m "v1.0"
 $ git push github prod
 ```
