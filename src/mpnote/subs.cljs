@@ -7,6 +7,25 @@
  (fn [db]
    (:name db)))
 
+(re-frame/reg-sub
+ ::cur-step
+ (fn [db]
+   (:cur-step db)))
+
+(re-frame/reg-sub
+  ::bar-tops
+  (fn [db]
+    (->> (get-in db [:score :steps] [])
+         (map-indexed #(if (:bar-top? %2) %1 nil))
+         (filter some?))))
+
+(re-frame/reg-sub
+  ::pedals
+  (fn [db]
+    (->> (get-in db [:score :steps] [])
+         (map-indexed #(if (nil? (:pedal %2)) nil [%1 (= (:pedal %2) :on)]))
+         (filter some?))))
+
 (defn note-with-dummies
   [tick-no {:keys [note-no hand finger-no length] :as note}]
   (let [main-note (assoc note :tick-no tick-no)]
