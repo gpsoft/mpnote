@@ -12,6 +12,11 @@
 (def color-white :#f5f5f5)
 (def color-black :#333333)
 (def color-black-timeline :#dddddd)
+(def color-note-fg :#333333)
+(def color-left-note-bg "hsl(210deg 80% 80%)")
+(def color-left-note-bd "hsl(210deg 80% 70%)")
+(def color-right-note-bg "hsl(118deg 80% 80%)")
+(def color-right-note-bd "hsl(118deg 80% 70%)")
 
 (defcssfn linear-gradient
  ([c1 p1 c2 p2]
@@ -74,6 +79,37 @@
     [:.timeline {}
      [:.white-key {:background-color color-white}]
      [:.black-key {:background-color color-black-timeline}]]
+
+    [:.timeline {}
+     [:.note :.dummy-note
+      {:position :absolute
+       :left :50%
+       :transform "translateX(-50%)"
+       :line-height :16px
+       :z-index 2}]
+     [:.note
+      {:padding :1px
+       :border "1px solid white"
+       :border-radius :50%
+       :min-width :16px
+       :text-align :center}
+      [:&.left-note
+       {:color color-note-fg
+        :background-color color-left-note-bg
+        :border-color color-left-note-bd}]
+      [:&.right-note
+       {:color color-note-fg
+        :background-color color-right-note-bg
+        :border-color color-right-note-bd}]]
+     [:.dummy-note
+      {:width :6px
+       :height :40px
+       :transform "translate(-50%, -20px)"}
+      [:&.left-note
+       {:background-color color-left-note-bd}]
+      [:&.right-note
+       {:background-color color-right-note-bd}]]
+     ]
     ]])
 
 (defclass brand
