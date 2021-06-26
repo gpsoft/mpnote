@@ -5,9 +5,13 @@
    [mpnote.subs :as subs]
    ))
 
+(defn top-in-tl
+  [step-ix]
+  (+ (styles/step-top step-ix) 20))
+
 (defn vnote [{:keys [tick-no hand finger-no]}]
   (let [dummy? (nil? finger-no)
-        top (* (dec tick-no) 40)
+        top (top-in-tl (dec tick-no))
         ;; FIX: use step instead of tick
         klass (str (name hand) "-note")]
     [:div
@@ -66,13 +70,13 @@
 
 (defn cur-step []
   (let [cur-step-ix (re-frame/subscribe [::subs/cur-step])
-        top (* @cur-step-ix 40)]
+        top (top-in-tl @cur-step-ix)]
     [:div.cur-step
       {:style {:top top}}]))
 
 (defn vbar-top
   [step-ix]
-  (let [top (* step-ix 40)]
+  (let [top (top-in-tl step-ix)]
     [:div.bar-top
      {:style {:top top}
       :key step-ix}]))
@@ -96,7 +100,7 @@
 
 (defn vpedal
   [[step-ix on?]]
-  (let [top (* step-ix 40)
+  (let [top (top-in-tl step-ix)
         klass (if on? :pedal-on :pedal-off)]
     [:div.pedal
      {:class klass
