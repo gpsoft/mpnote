@@ -41,4 +41,5 @@ $ vim docs/index.html
 $ git add docs
 $ git com -m "v1.0"
 $ git push github prod
+$ git co master
 ```
