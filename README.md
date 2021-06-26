@@ -27,6 +27,15 @@ Open `http://localhost:8280`
 ## リリース
 
 ```shell-session
+$ git co master
 $ npm run release
     #=> resources/public/js/compiled/app.js
+$ git co prod
+$ git merge master
+$ cp -r resources/public/* docs/
+$ vim docs/index.html
+    Fix src of app.js
+$ git add .
+$ git com -m "v1.0"
+$ git push github prod
 ```
