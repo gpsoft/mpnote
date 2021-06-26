@@ -13,3 +13,7 @@
 
 # shadow-cljs cache, port files
 /.shadow-cljs/
+
+# for release
+/docs/js/compiled/*
+!/docs/js/compiled/app.js
