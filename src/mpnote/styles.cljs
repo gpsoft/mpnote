@@ -41,9 +41,23 @@
    {:display :flex}
    [:.indicator-col
     {:width "80px"
+     :position :relative
+     :margin-top :10vh
      ; :height "100vh"
-     ; :background-color color-white
-     }]
+     :background-color color-white
+     }
+    [:.pedal
+     {:width :32px
+      :height :32px
+      :position :absolute
+      :right :4px
+      :transform "translateY(-8px)"}
+     [:&.pedal-on
+      {:background "url('img/ped.png') no-repeat"
+       :background-size :contain}]
+     [:&.pedal-off
+      {:background "url('img/senza.png') no-repeat"
+       :background-size :contain}]]]
    [:.annotation-col
     {:width "80px"
      ; :height "100vh"
@@ -80,7 +94,8 @@
      [:.white-key {:background-color color-white}]
      [:.black-key {:background-color color-black-timeline}]]
 
-    [:.timeline {}
+    [:.timeline
+     {:position :relative}
      [:.note :.dummy-note
       {:position :absolute
        :left :50%
@@ -109,6 +124,17 @@
        {:background-color color-left-note-bd}]
       [:&.right-note
        {:background-color color-right-note-bd}]]
+     [:.cur-step
+      {:position :absolute
+       :left 0
+       :width :100%
+       :border-top "3px solid #ff0000"
+       :transform "translateY(10px)"}]
+     [:.bar-top
+      {:position :absolute
+       :left 0
+       :width :100%
+       :border-top "1px solid #666666"}]
      ]
     ]])
 

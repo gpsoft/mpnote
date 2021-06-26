@@ -2,15 +2,22 @@
 
 (def default-db
   {:name "re-frame"
+   :cur-step 0
    :score
    {:title "ベートーヴェン - Op.27.No.2 -「月光 - 第1楽章」"
     :url "https://www.youtube.com/watch?v=S73r-xb1d6c"
-    :tempo 12
+    :ticks-per-bar 12
     :steps
     [{:type :tick
       :tick-no 1
+      :bar-top? true
+      :pedal :on
       :notes
-      [{:note-no 37
+      [  ;; :note-no       21-108
+         ;; :hand          :left or :right
+         ;; :finger-no     0, 1/2/3/4/5, 12/54/15...
+         ;; :length        デフォルトで1、単位はtick
+       {:note-no 37
         :hand :left
         :finger-no 4
         :length 12}
@@ -89,6 +96,8 @@
         :finger-no 4}]}
      {:type :tick
       :tick-no 13
+      :bar-top? true
+      :pedal :on
       :notes
       [{:note-no 35
         :hand :left

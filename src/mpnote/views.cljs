@@ -8,6 +8,7 @@
 (defn vnote [{:keys [tick-no hand finger-no]}]
   (let [dummy? (nil? finger-no)
         top (* (dec tick-no) 40)
+        ;; FIX: use step instead of tick
         klass (str (name hand) "-note")]
     [:div
      {:class (str (if dummy? "dummy-note" "note") " " klass)
@@ -63,6 +64,23 @@
    (key-1 :white (+ no 11) tl?)
    ])
 
+(defn cur-step []
+  (let [cur-step-ix (re-frame/subscribe [::subs/cur-step])
+        top (* @cur-step-ix 40)]
+    [:div.cur-step
+      {:style {:top top}}]))
+
+(defn vbar-top
+  [step-ix]
+  (let [top (* step-ix 40)]
+    [:div.bar-top
+     {:style {:top top}
+      :key step-ix}]))
+
+(defn bar-tops []
+  (let [tops (re-frame/subscribe [::subs/bar-tops])]
+    (map vbar-top @tops)))
+
 (defn keys-88
   ([] (keys-88 false))
   ([tl?]
@@ -71,8 +89,24 @@
     (keys-3 21 tl?)
     (doall (map #(keys-12 (+ (* % 12) 24) tl?) (range 7)))
     (keys-1 108 tl?)
+    (when tl? (cur-step))
+    (when tl? (bar-tops))
     ]))
 (defn timeline [] (keys-88 true))
+
+(defn vpedal
+  [[step-ix on?]]
+  (let [top (* step-ix 40)
+        klass (if on? :pedal-on :pedal-off)]
+    [:div.pedal
+     {:class klass
+      :style {:top top}
+      :key step-ix}]))
+
+(defn indicator []
+  (let [pedals (re-frame/subscribe [::subs/pedals])]
+    [:div.indicator-col
+     (map vpedal @pedals)]))
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]
@@ -82,7 +116,7 @@
        {:class (styles/brand)}
        "MPのおと"]]
      [:div.main-container
-      [:div.indicator-col]
+      (indicator)
       [:div.main-col
        (keys-88)
        (timeline)]

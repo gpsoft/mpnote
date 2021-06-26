@@ -4,6 +4,8 @@
 
 ## 使い方
 
+https://gpsoft.github.io/mpnote/
+
 ## 開発
 
 - ClojureScript
@@ -33,6 +35,7 @@ $ npm run release
 $ git co prod
 $ git merge master
 $ cp -r resources/public/* docs/
+    Or... cp resources/public/js/compiled/app.js docs/js/compiled/
 $ vim docs/index.html
     Fix src of app.js
 $ git add docs
