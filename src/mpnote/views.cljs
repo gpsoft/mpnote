@@ -3,21 +3,21 @@
    [re-frame.core :as re-frame]
    [mpnote.styles :as styles]
    [mpnote.subs :as subs]
+   [mpnote.events :as events]
    ))
 
 (defn top-in-tl
   [step-ix]
   (+ (styles/step-top step-ix) 20))
 
-(defn vnote [{:keys [tick-no hand finger-no]}]
+(defn vnote [{:keys [step-ix hand finger-no]}]
   (let [dummy? (nil? finger-no)
-        top (top-in-tl (dec tick-no))
-        ;; FIX: use step instead of tick
+        top (top-in-tl step-ix)
         klass (str (name hand) "-note")]
     [:div
      {:class (str (if dummy? "dummy-note" "note") " " klass)
       :style {:top top}
-      :key tick-no
+      :key step-ix
       }
      (when
        (and (not dummy?) (pos? finger-no))
@@ -112,6 +112,22 @@
     [:div.indicator-col
      (map vpedal @pedals)]))
 
+(defn move-step [ev ff?]
+  (.preventDefault ev)
+  (re-frame/dispatch [::events/move-step ff?]))
+
+(defn control-panel []
+  [:div.control-panel
+   [:a.btn.rewind
+    {:href :#
+     :on-click #(move-step % false)}
+    ""]
+   [:a.btn.fast-forward
+    {:href :#
+     :on-click #(move-step % true)}
+    ""]]
+  )
+
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]
     [:div.app
@@ -125,5 +141,6 @@
        (keys-88)
        (timeline)]
       [:div.annotation-col]]
+     (control-panel)
      #_[:h1 {:class (styles/level1)} "Hello from " @name]
      ]))
