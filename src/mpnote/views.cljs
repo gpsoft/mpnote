@@ -10,15 +10,14 @@
   [step-ix]
   (+ (styles/step-top step-ix) 20))
 
-(defn vnote [{:keys [tick-no hand finger-no]}]
+(defn vnote [{:keys [step-ix hand finger-no]}]
   (let [dummy? (nil? finger-no)
-        top (top-in-tl (dec tick-no))
-        ;; FIX: use step instead of tick
+        top (top-in-tl step-ix)
         klass (str (name hand) "-note")]
     [:div
      {:class (str (if dummy? "dummy-note" "note") " " klass)
       :style {:top top}
-      :key tick-no
+      :key step-ix
       }
      (when
        (and (not dummy?) (pos? finger-no))

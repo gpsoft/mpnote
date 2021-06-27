@@ -26,22 +26,19 @@
          (map-indexed #(if (nil? (:pedal %2)) nil [%1 (= (:pedal %2) :on)]))
          (filter some?))))
 
-(defn note-with-dummies
-  [tick-no {:keys [note-no hand finger-no length] :as note}]
-  (let [main-note (assoc note :tick-no tick-no)]
-    (if (> length 1)
-      (conj
-        (map #(assoc {:hand hand} :tick-no (+ tick-no (inc %))) (range (dec length)))
-        main-note)
-      [main-note])))
-
-(defn my-notes
-  [my-note-no {:keys [tick-no notes]}]
-  (let [mines (filter #(= (:note-no %) my-note-no) notes)]
-    #_(js/console.log (clj->js mines))
-    (mapcat #(note-with-dummies tick-no %) mines)))
+(defn my-note
+  ;; 1step内に、my noteは高々一つだけのはず。
+  [my-note-no {:keys [step-ix notes]}]
+  (let [my-note (->> notes
+                     (filter #(= (:note-no %) my-note-no))
+                     (first))]
+    (when my-note
+      (assoc my-note :step-ix step-ix))))
 
 (re-frame/reg-sub
- ::notes
- (fn [db [_ note-no]]
-   (mapcat #(my-notes note-no %) (get-in db [:score :steps] []))))
+  ::notes
+  (fn [db [_ note-no]]
+    (let [steps (get-in db [:score :steps] [])]
+      (->> steps
+           (map #(my-note note-no %))
+           (filter some?)))))
