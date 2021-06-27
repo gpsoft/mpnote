@@ -1,5 +1,7 @@
 (ns mpnote.db)
 
+(def initial-scroll-top 20)
+
 (def moonlight
   {:title "ベートーヴェン - Op.27.No.2 -「月光 - 第1楽章」"
    :url "https://www.youtube.com/watch?v=S73r-xb1d6c"
@@ -168,4 +170,5 @@
 (def default-db
   {
    :cur-step-ix 0
+   :scroll-top initial-scroll-top
    :score (enrich-score moonlight)})

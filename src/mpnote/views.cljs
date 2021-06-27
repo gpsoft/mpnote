@@ -8,7 +8,8 @@
 
 (defn top-in-tl
   [step-ix]
-  (+ (styles/step-top step-ix) 20))
+  (let [scroll-top (re-frame/subscribe [::subs/scroll-top])]
+    (+ (styles/step-top step-ix) @scroll-top)))
 
 (defn vnote [{:keys [step-ix hand finger-no]}]
   (let [dummy? (nil? finger-no)
@@ -89,7 +90,7 @@
   ([] (keys-88 false))
   ([tl?]
    [:div
-    {:class (if tl? :timeline :keys-88)}
+    {:class (if tl? [:timeline :jsTimeline] :keys-88)}
     (keys-3 21 tl?)
     (doall (map #(keys-12 (+ (* % 12) 24) tl?) (range 7)))
     (keys-1 108 tl?)

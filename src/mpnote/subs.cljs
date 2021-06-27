@@ -13,6 +13,11 @@
    (:cur-step-ix db)))
 
 (re-frame/reg-sub
+ ::scroll-top
+ (fn [db]
+   (:scroll-top db)))
+
+(re-frame/reg-sub
   ::bar-tops
   (fn [db]
     (->> (get-in db [:score :steps] [])
