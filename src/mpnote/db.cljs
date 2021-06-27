@@ -25,92 +25,86 @@
          ;; :hand          :left or :right
          ;; :finger-no     (only for :press) 0, 1/2/3/4/5, 12/54/15...
          ;; :length        (only for :press) デフォルトで1、単位はtick
-      {:note-no 37
-       :hand :left
-       :finger-no 4
-       :length 12}
-      {:note-no 49
-       :hand :left
-       :finger-no 1
-       :length 12}
-      {:note-no 56
-       :hand :right
-       :finger-no 1}]}
+      {:note-no 37 :hand :left :finger-no 4 :length 12}
+      {:note-no 49 :hand :left :finger-no 1 :length 12}
+      {:note-no 56 :hand :right :finger-no 1}
+      ]}
     {
      :notes
-     [{:note-no 61
-       :hand :right
-       :finger-no 2}]}
+     [{:note-no 61 :hand :right :finger-no 2}]}
     {
      :notes
-     [{:note-no 64
-       :hand :right
-       :finger-no 4}]}
+     [{:note-no 64 :hand :right :finger-no 4}]}
     {
      :notes
-     [{:note-no 56
-       :hand :right
-       :finger-no 1}]}
+     [{:note-no 56 :hand :right :finger-no 1}]}
     {
      :notes
-     [{:note-no 61
-       :hand :right
-       :finger-no 2}]}
+     [{:note-no 61 :hand :right :finger-no 2}]}
     {
      :notes
-     [{:note-no 64
-       :hand :right
-       :finger-no 4}]}
+     [{:note-no 64 :hand :right :finger-no 4}]}
     {
      :notes
-     [{:note-no 56
-       :hand :right
-       :finger-no 1}]}
+     [{:note-no 56 :hand :right :finger-no 1}]}
     {
      :notes
-     [{:note-no 61
-       :hand :right
-       :finger-no 2}]}
+     [{:note-no 61 :hand :right :finger-no 2}]}
     {
      :notes
-     [{:note-no 64
-       :hand :right
-       :finger-no 4}]}
+     [{:note-no 64 :hand :right :finger-no 4}]}
     {
      :notes
-     [{:note-no 56
-       :hand :right
-       :finger-no 1}]}
+     [{:note-no 56 :hand :right :finger-no 1}]}
     {
      :notes
-     [{:note-no 61
-       :hand :right
-       :finger-no 2}]}
+     [{:note-no 61 :hand :right :finger-no 2}]}
     {
      :notes
-     [{:note-no 64
-       :hand :right
-       :finger-no 4}]}
+     [{:note-no 64 :hand :right :finger-no 4}]}
     {
      :bar-top? true
      :pedal :on
      :notes
-     [{:note-no 35
-       :hand :left
-       :finger-no 54
-       :length 12}
-      {:note-no 47
-       :hand :left
-       :finger-no 1
-       :length 12}
-      {:note-no 56
-       :hand :right
-       :finger-no 1}]}
+     [
+      {:note-no 35 :hand :left :finger-no 54 :length 12}
+      {:note-no 47 :hand :left :finger-no 1 :length 12}
+      {:note-no 56 :hand :right :finger-no 1}
+      ]}
     {
      :notes
-     [{:note-no 61
-       :hand :right
-       :finger-no 2}]}]
+     [{:note-no 61 :hand :right :finger-no 2}]}
+    {
+     :notes
+     [{:note-no 64 :hand :right :finger-no 4}]}
+    {
+     :notes
+     [{:note-no 56 :hand :right :finger-no 1}]}
+    {
+     :notes
+     [{:note-no 61 :hand :right :finger-no 2}]}
+    {
+     :notes
+     [{:note-no 64 :hand :right :finger-no 4}]}
+    {
+     :notes
+     [{:note-no 56 :hand :right :finger-no 1}]}
+    {
+     :notes
+     [{:note-no 61 :hand :right :finger-no 2}]}
+    {
+     :notes
+     [{:note-no 64 :hand :right :finger-no 4}]}
+    {
+     :notes
+     [{:note-no 56 :hand :right :finger-no 1}]}
+    {
+     :notes
+     [{:note-no 61 :hand :right :finger-no 2}]}
+    {
+     :notes
+     [{:note-no 64 :hand :right :finger-no 4}]}
+    ]
    })
 
 (defn long-note

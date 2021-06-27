@@ -11,12 +11,12 @@
 (def note-line-height 20)
 (def note-height (+ note-line-height 2 2)) ;padding and border
 (def key-height 60)
-(def timeline-height-vh 75)
 (def pedal-height 32)
 (defn step-top [step-ix] (+ (* step-ix step-height) 0))
 
 (def color-main-text  "hsl(24deg 90% 20%)")
 (def color-light-main "hsl(24deg 70% 90%)")
+(def color-lighter-main "hsl(24deg 100% 93%)")
 (def color-white :#f5f5f5)
 (def color-black :#333333)
 (def color-black-timeline :#dddddd)
@@ -37,7 +37,6 @@
    {:color               color-main-text
     :background-color    color-light-main
     :font-size :16px
-    :padding :0.5rem
     :min-height :500px
     ; :background-image    [(linear-gradient :white (px 2) :transparent (px 2))
     ;                       (linear-gradient (deg 90) :white (px 2) :transparent (px 2))
@@ -47,17 +46,39 @@
     ; :background-position [[(px -2) (px -2)] [(px -2) (px -2)] [(px -1) (px -1)] [(px -1) (px -1)]]
     }]
   [:.app
-   {:position :relative}]
+   {:position :relative
+    :display :flex
+    :flex-direction :column
+    :height :100vh}]
+  [:.header
+   {:display :flex
+    :align-items :center
+    :margin-bottom :0.5rem
+    :border (str "1px solid " color-main-text)}
+   [:.brand
+    {:font-size :1.2rem
+     :line-height :1.8rem
+     :padding "0 4px"
+     :color color-white
+     :background-color color-main-text}]
+   [:a.title-link
+    {:flex-grow 1
+     :text-decoration :none
+     :padding-left :4px
+     :line-height :1.8rem
+     :color color-main-text
+     :background-color color-lighter-main}
+    [:&:visited
+     {:color :inherit}]]
+   ]
   [:.main-container
-   {:display :flex}
+   {:display :flex
+    :flex-grow 1}
    [:.indicator-col
     {:width "60px"
      :position :relative
      :margin-top (px key-height)
-     :overflow :hidden
-     ; :height "100vh"
-     ; :background-color color-white
-     }
+     :overflow :hidden}
     [:.pedal
      {:width (px pedal-height)
       :height (px pedal-height)
@@ -72,15 +93,11 @@
       {:background "url('img/senza.png') no-repeat"
        :background-size :contain}]]]
    [:.annotation-col
-    {:width "60px"
-     ; :height "100vh"
-     ; :background-color :red
-     }]
+    {:width "60px"}]
    [:.main-col
-    {:flex-grow 1
-     ; :height "100vh"
-     ; :background-color :blue
-     }
+    {:display :flex
+     :flex-direction :column
+     :flex-grow 1}
     [:.keys-88 :.timeline
      {:display :flex}
      [:.keys-12 {:flex-grow 12}]
@@ -89,11 +106,10 @@
     [:.keys-88
      {:height (px key-height)}]
     [:.timeline
-     {:height (str timeline-height-vh "vh")
-      :min-height :400px    ;See min-height of body
+     {:min-height :400px    ;See min-height of body
       :position :relative
       :overflow :hidden
-      }]
+      :flex-grow 1}]
 
     [:.octave
      {:display :flex
@@ -175,9 +191,3 @@
     [:&.fast-forward
      {:background-image "url('img/fast-forward.png')"}]]]
   )
-
-(defclass brand
-  []
-  {:font-size :1.2rem
-   :margin-bottom :0.5rem
-   :color color-main-text})

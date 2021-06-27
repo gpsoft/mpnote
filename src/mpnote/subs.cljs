@@ -8,6 +8,13 @@
    (:name db)))
 
 (re-frame/reg-sub
+ ::score-info
+ (fn [db]
+   (let [title (get-in db [:score :title])
+         url (get-in db [:score :url])]
+     [title url])))
+
+(re-frame/reg-sub
  ::cur-step
  (fn [db]
    (:cur-step-ix db)))

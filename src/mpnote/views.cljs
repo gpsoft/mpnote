@@ -6,6 +6,15 @@
    [mpnote.events :as events]
    ))
 
+(defn score-info []
+  (let [info (re-frame/subscribe [::subs/score-info])
+        [title url] @info]
+    (when title
+      [:a.title-link
+       {:href url
+        :target "_blank"}
+       title])))
+
 (defn top-in-tl
   [step-ix]
   (let [scroll-top (re-frame/subscribe [::subs/scroll-top])]
@@ -132,10 +141,10 @@
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]
     [:div.app
-     [:header
-      [:h1
-       {:class (styles/brand)}
-       "MPのおと"]]
+     [:header.header
+      [:h1.brand
+       "ピアノ教室のおと"]
+      (score-info)]
      [:div.main-container
       (indicator)
       [:div.main-col
