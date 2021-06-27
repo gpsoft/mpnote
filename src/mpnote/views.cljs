@@ -3,6 +3,7 @@
    [re-frame.core :as re-frame]
    [mpnote.styles :as styles]
    [mpnote.subs :as subs]
+   [mpnote.events :as events]
    ))
 
 (defn top-in-tl
@@ -112,6 +113,22 @@
     [:div.indicator-col
      (map vpedal @pedals)]))
 
+(defn move-step [ev ff?]
+  (.preventDefault ev)
+  (re-frame/dispatch [::events/move-step ff?]))
+
+(defn control-panel []
+  [:div.control-panel
+   [:a.btn.rewind
+    {:href :#
+     :on-click #(move-step % false)}
+    ""]
+   [:a.btn.fast-forward
+    {:href :#
+     :on-click #(move-step % true)}
+    ""]]
+  )
+
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]
     [:div.app
@@ -125,5 +142,6 @@
        (keys-88)
        (timeline)]
       [:div.annotation-col]]
+     (control-panel)
      #_[:h1 {:class (styles/level1)} "Hello from " @name]
      ]))

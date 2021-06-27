@@ -46,6 +46,8 @@
     ; :background-size     [[(px 100) (px 100)] [(px 100) (px 100)] [(px 20) (px 20)] [(px 20) (px 20)]]
     ; :background-position [[(px -2) (px -2)] [(px -2) (px -2)] [(px -1) (px -1)] [(px -1) (px -1)]]
     }]
+  [:.app
+   {:position :relative}]
   [:.main-container
    {:display :flex}
    [:.indicator-col
@@ -152,7 +154,27 @@
        :width :100%
        :border-top "1px solid #666666"}]
      ]
-    ]])
+    ]]
+  [:.control-panel
+   {:position :absolute
+    :right 0
+    :top (px (+ key-height 60))
+    :padding :12px
+    :font-size :2rem
+    :background-color "hsl(210deg 30% 90%)"
+    :border "3px double hsl(210deg 90% 70%)"
+    :border-radius :6px}
+   [:.btn
+    {:display :block
+     :width :64px
+     :height :64px
+     :background "no-repeat center"
+     :background-size "contain"}
+    [:&.rewind
+     {:background-image "url('img/rewind.png')"}]
+    [:&.fast-forward
+     {:background-image "url('img/fast-forward.png')"}]]]
+  )
 
 (defclass brand
   []

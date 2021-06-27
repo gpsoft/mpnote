@@ -10,7 +10,7 @@
 (re-frame/reg-sub
  ::cur-step
  (fn [db]
-   (:cur-step db)))
+   (:cur-step-ix db)))
 
 (re-frame/reg-sub
   ::bar-tops
