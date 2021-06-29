@@ -6,9 +6,19 @@
    [mpnote.events :as events]
    ))
 
+(defn score-info []
+  (let [info (re-frame/subscribe [::subs/score-info])
+        [title url] @info]
+    (when title
+      [:a.title-link
+       {:href url
+        :target "_blank"}
+       title])))
+
 (defn top-in-tl
   [step-ix]
-  (+ (styles/step-top step-ix) 20))
+  (let [scroll-top (re-frame/subscribe [::subs/scroll-top])]
+    (+ (styles/step-top step-ix) @scroll-top)))
 
 (defn vnote [{:keys [step-ix hand finger-no]}]
   (let [dummy? (nil? finger-no)
@@ -83,13 +93,13 @@
 
 (defn bar-tops []
   (let [tops (re-frame/subscribe [::subs/bar-tops])]
-    (map vbar-top @tops)))
+    (doall (map vbar-top @tops))))
 
 (defn keys-88
   ([] (keys-88 false))
   ([tl?]
    [:div
-    {:class (if tl? :timeline :keys-88)}
+    {:class (if tl? [:timeline :jsTimeline] :keys-88)}
     (keys-3 21 tl?)
     (doall (map #(keys-12 (+ (* % 12) 24) tl?) (range 7)))
     (keys-1 108 tl?)
@@ -110,37 +120,45 @@
 (defn indicator []
   (let [pedals (re-frame/subscribe [::subs/pedals])]
     [:div.indicator-col
-     (map vpedal @pedals)]))
+     (doall (map vpedal @pedals))]))
 
 (defn move-step [ev ff?]
   (.preventDefault ev)
   (re-frame/dispatch [::events/move-step ff?]))
 
+(defn play-pause [ev]
+  (.preventDefault ev)
+  (re-frame/dispatch [::events/play-pause]))
+
 (defn control-panel []
-  [:div.control-panel
-   [:a.btn.rewind
-    {:href :#
-     :on-click #(move-step % false)}
-    ""]
-   [:a.btn.fast-forward
-    {:href :#
-     :on-click #(move-step % true)}
-    ""]]
+  (let [playing? (re-frame/subscribe [::subs/playing?])]
+    [:div.control-panel
+     [:a.btn.rewind
+      {:href :#
+       :on-click #(move-step % false)}
+      ""]
+     [:a.btn.play-pause
+      {:href :#
+       :class (if @playing? :playing "")
+       :on-click #(play-pause %)}
+      ""]
+     [:a.btn.fast-forward
+      {:href :#
+       :on-click #(move-step % true)}
+      ""]])
   )
 
 (defn main-panel []
-  (let [name (re-frame/subscribe [::subs/name])]
-    [:div.app
-     [:header
-      [:h1
-       {:class (styles/brand)}
-       "MPのおと"]]
-     [:div.main-container
-      (indicator)
-      [:div.main-col
-       (keys-88)
-       (timeline)]
-      [:div.annotation-col]]
-     (control-panel)
-     #_[:h1 {:class (styles/level1)} "Hello from " @name]
-     ]))
+  [:div.app
+   [:header.header
+    [:h1.brand
+     "ピアノ教室のおと"]
+    (score-info)]
+   [:div.main-container
+    (indicator)
+    [:div.main-col
+     (keys-88)
+     (timeline)]
+    [:div.annotation-col]]
+   (control-panel)
+   ])

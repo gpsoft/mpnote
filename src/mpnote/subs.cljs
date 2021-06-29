@@ -3,14 +3,26 @@
    [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub
- ::name
+ ::score-info
  (fn [db]
-   (:name db)))
+   (let [title (get-in db [:score :title])
+         url (get-in db [:score :url])]
+     [title url])))
 
 (re-frame/reg-sub
  ::cur-step
  (fn [db]
    (:cur-step-ix db)))
+
+(re-frame/reg-sub
+ ::playing?
+ (fn [db]
+   (:playing? db)))
+
+(re-frame/reg-sub
+ ::scroll-top
+ (fn [db]
+   (:scroll-top db)))
 
 (re-frame/reg-sub
   ::bar-tops
