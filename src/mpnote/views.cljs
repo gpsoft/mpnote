@@ -93,7 +93,7 @@
 
 (defn bar-tops []
   (let [tops (re-frame/subscribe [::subs/bar-tops])]
-    (map vbar-top @tops)))
+    (doall (map vbar-top @tops))))
 
 (defn keys-88
   ([] (keys-88 false))
@@ -120,37 +120,45 @@
 (defn indicator []
   (let [pedals (re-frame/subscribe [::subs/pedals])]
     [:div.indicator-col
-     (map vpedal @pedals)]))
+     (doall (map vpedal @pedals))]))
 
 (defn move-step [ev ff?]
   (.preventDefault ev)
   (re-frame/dispatch [::events/move-step ff?]))
 
+(defn play-pause [ev]
+  (.preventDefault ev)
+  (re-frame/dispatch [::events/play-pause]))
+
 (defn control-panel []
-  [:div.control-panel
-   [:a.btn.rewind
-    {:href :#
-     :on-click #(move-step % false)}
-    ""]
-   [:a.btn.fast-forward
-    {:href :#
-     :on-click #(move-step % true)}
-    ""]]
+  (let [playing? (re-frame/subscribe [::subs/playing?])]
+    [:div.control-panel
+     [:a.btn.rewind
+      {:href :#
+       :on-click #(move-step % false)}
+      ""]
+     [:a.btn.play-pause
+      {:href :#
+       :class (if @playing? :playing "")
+       :on-click #(play-pause %)}
+      ""]
+     [:a.btn.fast-forward
+      {:href :#
+       :on-click #(move-step % true)}
+      ""]])
   )
 
 (defn main-panel []
-  (let [name (re-frame/subscribe [::subs/name])]
-    [:div.app
-     [:header.header
-      [:h1.brand
-       "ピアノ教室のおと"]
-      (score-info)]
-     [:div.main-container
-      (indicator)
-      [:div.main-col
-       (keys-88)
-       (timeline)]
-      [:div.annotation-col]]
-     (control-panel)
-     #_[:h1 {:class (styles/level1)} "Hello from " @name]
-     ]))
+  [:div.app
+   [:header.header
+    [:h1.brand
+     "ピアノ教室のおと"]
+    (score-info)]
+   [:div.main-container
+    (indicator)
+    [:div.main-col
+     (keys-88)
+     (timeline)]
+    [:div.annotation-col]]
+   (control-panel)
+   ])

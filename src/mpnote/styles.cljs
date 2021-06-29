@@ -186,8 +186,14 @@
      :height :64px
      :background "no-repeat center"
      :background-size "contain"}
+    [:&:active
+     {:opacity 0.8}]
     [:&.rewind
      {:background-image "url('img/rewind.png')"}]
     [:&.fast-forward
-     {:background-image "url('img/fast-forward.png')"}]]]
+     {:background-image "url('img/fast-forward.png')"}]
+    [:&.play-pause
+     {:background-image "url('img/play.png')"}]
+    [:&.play-pause.playing
+     {:background-image "url('img/pause.png')"}]]]
   )
