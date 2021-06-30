@@ -55,7 +55,7 @@ $ git co master
 $ npm run release
     #=> resources/public/js/compiled/app.js
 $ git co prod
-$ git merge master
+$ git merge master -m "Merge from master branch"
 $ cp -r resources/public/* docs/
     Or... cp resources/public/js/compiled/app.js docs/js/compiled/
 $ vim docs/index.html
