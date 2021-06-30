@@ -117,9 +117,14 @@
   (fn-traced
     [db [_ ev]]
     (let [ev-type (.-type ev)
-          x (.-pageX ev)
-          y (.-pageY ev)]
+          ; x (.-pageX ev)
+          ; y (.-pageY ev)
+          x (.-screenX ev)
+          y (.-screenY ev)
+          ]
       (condp = ev-type
         "dragstart" (assoc db :dragging-control-panel-from [x y])
         "drag" (move-control-panel db x y)
-        "dragend" (assoc db :dragging-control-panel-from nil)))))
+        "dragend" (-> db
+                     (move-control-panel x y)
+                     (assoc :dragging-control-panel-from nil))))))

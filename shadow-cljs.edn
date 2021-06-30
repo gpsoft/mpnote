@@ -26,8 +26,8 @@
    :asset-path "/js/compiled"
    :modules
    {:app {:init-fn mpnote.core/init}}
-   :devtools
-   {:preloads [day8.re-frame-10x.preload]}
+   ; :devtools
+   ; {:preloads [day8.re-frame-10x.preload]}
    :dev
    {:compiler-options
     {:closure-defines

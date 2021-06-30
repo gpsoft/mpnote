@@ -136,6 +136,7 @@
         [control-panel-x control-panel-y] @control-panel-pos]
     [:div.control-panel
      {:style {:transform (str "translate(" control-panel-x "px, " control-panel-y "px)")}
+      :draggable true
       :on-drag-start #(re-frame/dispatch [::events/drag-control-panel %])
       :on-drag-end #(re-frame/dispatch [::events/drag-control-panel %])
       :on-drag #(re-frame/dispatch [::events/drag-control-panel %])}
