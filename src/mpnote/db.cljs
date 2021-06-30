@@ -471,9 +471,7 @@
 
 (defn make-dummy-notes
   [lnotes {:keys [tickstamp notes] :as step}]
-  (do (js/console.log tickstamp))
   (let [notes-for-step (filter #(in-step tickstamp %) lnotes)
-        _ (do (js/console.log (:step-ix step)) (js/console.log (clj->js notes-for-step)))
         notes-for-step (map make-dummy-note notes-for-step)]
     (assoc step :notes (concat notes notes-for-step))))
 
@@ -509,4 +507,6 @@
   {
    :cur-step-ix 0
    :scroll-top initial-scroll-top
+   :control-panel-pos [0 0]
+   :dragging-control-panel-from nil
    :score (enrich-score moonlight)})

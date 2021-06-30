@@ -19,7 +19,7 @@
 (def color-lighter-main "hsl(24deg 100% 93%)")
 (def color-white :#f5f5f5)
 (def color-black :#333333)
-(def color-black-timeline :#dddddd)
+(def color-black-timeline :#c8c8c8)
 (def color-note-fg :#333333)
 (def color-left-note-bg "hsl(210deg 80% 80%)")
 (def color-left-note-bd "hsl(210deg 80% 70%)")
