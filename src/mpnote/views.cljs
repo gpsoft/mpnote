@@ -122,9 +122,9 @@
     [:div.indicator-col
      (doall (map vpedal @pedals))]))
 
-(defn move-step [ev ff?]
+(defn seek-bar [ev ff?]
   (.preventDefault ev)
-  (re-frame/dispatch [::events/move-step ff?]))
+  (re-frame/dispatch [::events/seek-bar ff?]))
 
 (defn play-pause [ev]
   (.preventDefault ev)
@@ -141,7 +141,7 @@
       :on-drag #(re-frame/dispatch [::events/drag-control-panel %])}
      [:a.btn.rewind
       {:href :#
-       :on-click #(move-step % false)}
+       :on-click #(seek-bar % false)}
       ""]
      [:a.btn.play-pause
       {:href :#
@@ -150,7 +150,7 @@
       ""]
      [:a.btn.fast-forward
       {:href :#
-       :on-click #(move-step % true)}
+       :on-click #(seek-bar % true)}
       ""]])
   )
 

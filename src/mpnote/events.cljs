@@ -40,19 +40,44 @@
         max-top (/ vh 2)]
     (- (max (min (+ cur-top step-top) max-top) min-top) step-top)))
 
+(defn move-to
+  [db step-ix]
+  (let [top (:scroll-top db)]
+    (assoc db
+           :cur-step-ix step-ix
+           :scroll-top (scroll-top top step-ix))))
+
 (re-frame/reg-event-db
   ::move-step
   (fn-traced
     [db [_ ff?]]
-    (let [top (:scroll-top db)
-          cur (:cur-step-ix db)
-          las (dec (count (get-in db [:score :steps])))
-          cur (max 0 (+ cur (if ff? 1 -1)))
-          cur (if (> cur las) 0 cur)]
-      (assoc db
-             :cur-step-ix cur
-             :scroll-top (scroll-top top cur)))))
+    (let [step-ix (:cur-step-ix db)
+          last-step-ix (dec (count (get-in db [:score :steps])))
+          step-ix (min last-step-ix (max 0 (+ step-ix (if ff? 1 -1))))
+          ; step-ix (if (> step-ix last-step-ix) 0 step-ix)
+          ]
+      (move-to db step-ix))))
 
+(re-frame/reg-event-db
+  ::seek-bar
+  (fn-traced
+    [db [_ ff?]]
+    (let [step-ix (:cur-step-ix db)
+          tops (->> (get-in db [:score :steps])
+                    (filter #(:bar-top? %))
+                    (map #(:step-ix %)))
+          candidates (filter (fn [ix] (if ff? (> ix step-ix) (< ix step-ix))) tops)
+          step-ix (if (empty? candidates)
+                    (if ff? 0 (or (last tops) 0))
+                    (if ff? (first candidates) (last candidates)))]
+      (move-to db step-ix))))
+
+(comment
+  (nth [1 2 3] 0)
+  (nth [1 2 3] -1)
+  (first [])
+  (last nil)
+  )
 (re-frame/reg-event-fx
   ::play-pause
   (fn-traced
