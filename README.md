@@ -51,16 +51,8 @@ Open `http://localhost:8280`
 ## リリース
 
 ```shell-session
-$ git co master
-$ npm run release
-    #=> resources/public/js/compiled/app.js
 $ git co prod
-$ git merge master -m "Merge from master branch"
-$ cp -r resources/public/* docs/
-    Or... cp resources/public/js/compiled/app.js docs/js/compiled/
-$ vim docs/index.html
-    Fix src of app.js
-$ git add docs
+$ ./release.sh
 $ git com -m "v1.0"
 $ git push github prod
 $ git co master
