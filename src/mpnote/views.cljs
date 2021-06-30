@@ -131,8 +131,14 @@
   (re-frame/dispatch [::events/play-pause]))
 
 (defn control-panel []
-  (let [playing? (re-frame/subscribe [::subs/playing?])]
+  (let [playing? (re-frame/subscribe [::subs/playing?])
+        control-panel-pos (re-frame/subscribe [::subs/control-panel-pos])
+        [control-panel-x control-panel-y] @control-panel-pos]
     [:div.control-panel
+     {:style {:transform (str "translate(" control-panel-x "px, " control-panel-y "px)")}
+      :on-drag-start #(re-frame/dispatch [::events/drag-control-panel %])
+      :on-drag-end #(re-frame/dispatch [::events/drag-control-panel %])
+      :on-drag #(re-frame/dispatch [::events/drag-control-panel %])}
      [:a.btn.rewind
       {:href :#
        :on-click #(move-step % false)}

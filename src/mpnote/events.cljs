@@ -67,3 +67,34 @@
                     :id :play
                     :frequency 1500
                     :event [::move-step true]}}))))
+
+(defn ignore-move?
+  [from-x from-y to-x to-y]
+  (or
+    (and (zero? to-x) (zero? to-y))  ;; なぜか、drop時にdrag 0 0イベントが来る
+    (and (< (.abs js/Math (- to-x from-x)) 10)
+         (< (.abs js/Math (- to-y from-y)) 10))))
+
+(defn move-control-panel
+  [{[x y] :control-panel-pos
+    [from-x from-y] :dragging-control-panel-from
+    :as db}
+   to-x to-y]
+  (if (ignore-move? from-x from-y to-x to-y)
+    db
+    (let [new-x (+ x (- to-x from-x))
+          new-y (+ y (- to-y from-y))]
+      (assoc db :control-panel-pos [new-x new-y]
+             :dragging-control-panel-from [to-x to-y]))))
+
+(re-frame/reg-event-db
+  ::drag-control-panel
+  (fn-traced
+    [db [_ ev]]
+    (let [ev-type (.-type ev)
+          x (.-pageX ev)
+          y (.-pageY ev)]
+      (condp = ev-type
+        "dragstart" (assoc db :dragging-control-panel-from [x y])
+        "drag" (move-control-panel db x y)
+        "dragend" (assoc db :dragging-control-panel-from nil)))))

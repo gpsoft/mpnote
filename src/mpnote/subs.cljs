@@ -25,6 +25,11 @@
    (:scroll-top db)))
 
 (re-frame/reg-sub
+ ::control-panel-pos
+ (fn [db]
+   (:control-panel-pos db)))
+
+(re-frame/reg-sub
   ::bar-tops
   (fn [db]
     (->> (get-in db [:score :steps] [])
