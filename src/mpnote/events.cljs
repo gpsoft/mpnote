@@ -96,9 +96,11 @@
 (defn ignore-move?
   [from-x from-y to-x to-y]
   (or
-    (and (zero? to-x) (zero? to-y))  ;; なぜか、drop時にdrag 0 0イベントが来る
-    (and (< (.abs js/Math (- to-x from-x)) 10)
-         (< (.abs js/Math (- to-y from-y)) 10))))
+    (nil? from-x)
+    (nil? from-y)
+    #_(and (zero? to-x) (zero? to-y))  ;; なぜか、drop時にdrag 0 0イベントが来る
+    (and (< (.abs js/Math (- to-x from-x)) 8)
+         (< (.abs js/Math (- to-y from-y)) 8))))
 
 (defn move-control-panel
   [{[x y] :control-panel-pos
@@ -112,19 +114,46 @@
       (assoc db :control-panel-pos [new-x new-y]
              :dragging-control-panel-from [to-x to-y]))))
 
+(defn mouse-pos
+  [ev]
+  [(.-pageX ev) (.-pageY ev)])
+
+(defn touch-pos
+  [ev]
+  (let [touch (aget (.-changedTouches ev) 0)]
+    [(.-pageX touch) (.-pageY touch)]))
+
+(defn parse-drag-event
+  [ev]
+  (let [ev-type (.-type ev)]
+    (condp = ev-type
+        "mousedown" [:start (mouse-pos ev)]
+        "mousemove" [:drag (mouse-pos ev)]
+        "mouseup" [:end (mouse-pos ev)]
+        "mouseleave" [:end (mouse-pos ev)]
+        "touchstart" [:start (touch-pos ev)]
+        "touchmove" [:drag (touch-pos ev)]
+        "touchend" [:end (touch-pos ev)]
+        "touchcancel" [:end (touch-pos ev)]
+        [:none])))
+
+(defn drag-target?
+  [ev]
+  (let [target (-> ev .-target .-tagName)]
+    (not= target "A")))
+
 (re-frame/reg-event-db
   ::drag-control-panel
-  (fn-traced
+  (fn
     [db [_ ev]]
-    (let [ev-type (.-type ev)
-          ; x (.-pageX ev)
-          ; y (.-pageY ev)
-          x (.-screenX ev)
-          y (.-screenY ev)
-          ]
-      (condp = ev-type
-        "dragstart" (assoc db :dragging-control-panel-from [x y])
-        "drag" (move-control-panel db x y)
-        "dragend" (-> db
-                     (move-control-panel x y)
-                     (assoc :dragging-control-panel-from nil))))))
+    (let [[t [x y]] (parse-drag-event ev)]
+      (js/console.log (clj->js (parse-drag-event ev)))
+      (condp = t
+        :start (if (drag-target? ev)
+                 (assoc db :dragging-control-panel-from [x y])
+                 db)
+        :drag (move-control-panel db x y)
+        :end (-> db
+                 (move-control-panel x y)
+                 (assoc :dragging-control-panel-from nil))
+        db))))

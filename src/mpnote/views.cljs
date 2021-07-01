@@ -130,16 +130,20 @@
   (.preventDefault ev)
   (re-frame/dispatch [::events/play-pause]))
 
+(defn control-panel-dragger
+  [ev]
+  (re-frame/dispatch [::events/drag-control-panel ev]))
+
 (defn control-panel []
   (let [playing? (re-frame/subscribe [::subs/playing?])
-        control-panel-pos (re-frame/subscribe [::subs/control-panel-pos])
-        [control-panel-x control-panel-y] @control-panel-pos]
+        info (re-frame/subscribe [::subs/control-panel-info])
+        [dragging-control-panel? control-panel-pos] @info
+        [control-panel-x control-panel-y] control-panel-pos]
     [:div.control-panel
      {:style {:transform (str "translate(" control-panel-x "px, " control-panel-y "px)")}
-      :draggable true
-      :on-drag-start #(re-frame/dispatch [::events/drag-control-panel %])
-      :on-drag-end #(re-frame/dispatch [::events/drag-control-panel %])
-      :on-drag #(re-frame/dispatch [::events/drag-control-panel %])}
+      :on-mouse-down #(when-not dragging-control-panel? (control-panel-dragger %))
+      :on-touch-start #(when-not dragging-control-panel? (control-panel-dragger %))
+      }
      [:a.btn.rewind
       {:href :#
        :on-click #(seek-bar % false)}
@@ -156,16 +160,24 @@
   )
 
 (defn main-panel []
-  [:div.app
-   [:header.header
-    [:h1.brand
-     "ピアノ教室のおと"]
-    (score-info)]
-   [:div.main-container
-    (indicator)
-    [:div.main-col
-     (keys-88)
-     (timeline)]
-    [:div.annotation-col]]
-   (control-panel)
-   ])
+  (let [info (re-frame/subscribe [::subs/control-panel-info])
+        [dragging-control-panel?] @info]
+    [:div.app
+     {:on-mouse-move #(when dragging-control-panel? (control-panel-dragger %))
+      :on-mouse-up #(when dragging-control-panel? (control-panel-dragger %))
+      :on-mouse-leave #(when dragging-control-panel? (control-panel-dragger %))
+      :on-touch-move #(when dragging-control-panel? (control-panel-dragger %))
+      :on-touch-end #(when dragging-control-panel? (control-panel-dragger %))
+      :on-touch-cancel #(when dragging-control-panel? (control-panel-dragger %))}
+     [:header.header
+      [:h1.brand
+       "ピアノ教室のおと"]
+      (score-info)]
+     [:div.main-container
+      (indicator)
+      [:div.main-col
+       (keys-88)
+       (timeline)]
+      [:div.annotation-col]]
+     (control-panel)
+     ]))

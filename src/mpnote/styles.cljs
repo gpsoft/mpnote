@@ -175,11 +175,13 @@
    {:position :absolute
     :right 0
     :top (px (+ key-height 60))
-    :padding :12px
+    :padding :2px
+    :padding-top :18px
     :font-size :2rem
-    :background-color "hsl(210deg 30% 90%)"
-    :border "3px double hsl(210deg 90% 70%)"
-    :border-radius :6px}
+    :background "hsl(210deg 30% 90%) url('img/staff.png') repeat-x top"
+    :border (str "3px solid " color-left-note-bd)
+    :border-bottom-left-radius :6px
+    :border-bottom-right-radius :6px}
    [:.btn
     {:display :block
      :width :64px
