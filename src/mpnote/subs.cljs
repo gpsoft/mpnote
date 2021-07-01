@@ -25,9 +25,10 @@
    (:scroll-top db)))
 
 (re-frame/reg-sub
- ::control-panel-pos
+ ::control-panel-info
  (fn [db]
-   (:control-panel-pos db)))
+   [(some? (:dragging-control-panel-from db))
+    (:control-panel-pos db)]))
 
 (re-frame/reg-sub
   ::bar-tops
