@@ -122,6 +122,19 @@
     [:div.indicator-col
      (doall (map vpedal @pedals))]))
 
+(defn vbarno
+  [ix step-ix]
+  (let [top (top-in-tl step-ix)]
+    [:div.bar-no
+     {:style {:top top}
+      :key ix}
+     (inc ix)]))
+
+(defn annotation []
+  (let [tops (re-frame/subscribe [::subs/bar-tops])]
+    [:div.annotation-col
+    (doall (map-indexed vbarno @tops))]))
+
 (defn seek-bar [ev ff?]
   (.preventDefault ev)
   (re-frame/dispatch [::events/seek-bar ff?]))
@@ -178,6 +191,6 @@
       [:div.main-col
        (keys-88)
        (timeline)]
-      [:div.annotation-col]]
+      (annotation)]
      (control-panel)
      ]))
