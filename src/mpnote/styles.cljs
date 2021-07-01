@@ -14,6 +14,9 @@
 (def pedal-height 32)
 (defn step-top [step-ix] (+ (* step-ix step-height) 0))
 
+(def indicator-width 60)
+(def annotation-width 60)
+
 (def color-main-text  "hsl(24deg 90% 20%)")
 (def color-light-main "hsl(24deg 70% 90%)")
 (def color-lighter-main "hsl(24deg 100% 93%)")
@@ -75,7 +78,7 @@
    {:display :flex
     :flex-grow 1}
    [:.indicator-col
-    {:width "60px"
+    {:width (px indicator-width)
      :position :relative
      :margin-top (px key-height)
      :overflow :hidden}
@@ -93,7 +96,7 @@
       {:background "url('img/senza.png') no-repeat"
        :background-size :contain}]]]
    [:.annotation-col
-    {:width "60px"}]
+    {:width (px annotation-width)}]
    [:.main-col
     {:display :flex
      :flex-direction :column
@@ -173,7 +176,7 @@
     ]]
   [:.control-panel
    {:position :absolute
-    :right 0
+    :right (px (+ annotation-width 16))
     :top (px (+ key-height 60))
     :padding :2px
     :padding-top :18px
