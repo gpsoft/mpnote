@@ -25,8 +25,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.9615473"
-     inkscape:cx="391.27275"
-     inkscape:cy="243.68518"
+     inkscape:cx="534.0172"
+     inkscape:cy="401.72368"
      inkscape:window-width="1284"
      inkscape:window-height="1081"
      inkscape:window-x="1050"
@@ -196,5 +196,46 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30.6515px;font-family:Gabriola;-inkscape-font-specification:'Gabriola, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.766289"
          x="90.121559"
          y="65.377251">Ped.</tspan></text>
+    <rect
+       style="fill:#f9f9f9;fill-opacity:1;stroke-width:0.608348"
+       id="rect204"
+       width="141.60835"
+       height="33.777809"
+       x="70.210312"
+       y="90.129692"
+       inkscape:export-filename="D:\share\mpn\staff.png"
+       inkscape:export-xdpi="30.41"
+       inkscape:export-ydpi="30.41" />
+  </g>
+  <path
+     id="path24"
+     d="m 78.028848,113.86705 c 0,0 -1.173993,-0.24715 -1.482938,-1.97725 -0.430796,-2.41248 2.770101,-3.58356 4.263445,-2.65695 1.280574,0.79459 1.397592,3.37574 0.803258,4.57242 -1.880254,3.78584 -8.156156,1.60653 -8.403313,-3.15125 -0.216696,-4.17146 5.931751,-8.71232 5.931751,-8.71232 3.992433,-4.616512 3.63297,-7.590397 1.29757,-11.678136 -2.46174,1.694381 -3.558864,4.545466 -3.27482,7.229321 0.0957,0.797537 2.904085,23.294585 2.904085,23.294585 -0.247158,0.43252 0.153455,1.60167 -1.791882,2.47156 -1.46331,0.65435 -3.55001,-1.01216 -2.65693,-1.17399 0.618791,-0.11212 1.531782,-0.55155 1.668303,-1.7919 0.110668,-1.00538 -0.988623,-2.34798 -2.718716,-1.60652 -2.469631,1.8104 0.0016,5.06495 3.151241,5.25209 2.837849,-0.28571 2.918186,-2.98858 2.842296,-4.32525 -0.0643,-0.943 -2.718718,-21.379108 -2.718718,-21.379108 -0.06178,-1.297574 0.915619,-4.707953 2.533352,-4.819547 0.840431,-0.05798 1.481557,2.244972 0.370734,4.01629 -2.286195,3.645555 -8.597179,7.426985 -8.959414,11.369235 -0.403282,4.15449 3.115864,7.61475 6.796795,7.72367 1.93381,-0.23312 4.794597,-1.58951 5.128491,-5.37567 0.239178,-2.71212 -2.039036,-4.6342 -5.0667,-4.26346 -0.758623,0.0929 -2.58862,1.03084 -3.089454,2.53335 -0.655809,2.17909 0.579454,3.79387 2.471564,4.44883 z"
+     style="stroke-width:0.254426"
+     inkscape:export-filename="D:\share\mpn\staff.png"
+     inkscape:export-xdpi="30.41"
+     inkscape:export-ydpi="30.41" />
+  <g
+     id="g1221"
+     transform="matrix(1.7705306,0,0,1,-53.937145,16.404171)">
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 70,80.264583 h 80"
+       id="path166" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 70,85.264583 h 80"
+       id="path1128" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 70,90.264583 h 80"
+       id="path1130" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 70,95.264583 h 80"
+       id="path1132" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 70,100.26458 h 80"
+       id="path1134" />
   </g>
 </svg>

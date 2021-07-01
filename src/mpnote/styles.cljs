@@ -184,6 +184,7 @@
    {:position :absolute
     :right (px (+ annotation-width 16))
     :top (px (+ key-height 60))
+    :cursor :pointer
     :padding :2px
     :padding-top :18px
     :font-size :2rem
@@ -191,6 +192,15 @@
     :border (str "3px solid " color-left-note-bd)
     :border-bottom-left-radius :6px
     :border-bottom-right-radius :6px}
+   [:&::before
+    {:content "'♬'"         ;"'𝄞\\1d11e'"
+     :font-size :16px
+     :position :absolute
+     :display :inline-block
+     :line-height :16px
+     :top :-2px
+     :left 0
+     }]
    [:.btn
     {:display :block
      :width :64px
