@@ -152,7 +152,8 @@
         :start (if (drag-target? ev)
                  (assoc db :dragging-control-panel-from [x y])
                  db)
-        :drag (move-control-panel db x y)
+        :drag (do (.preventDefault ev)
+                  (move-control-panel db x y))
         :end (-> db
                  (move-control-panel x y)
                  (assoc :dragging-control-panel-from nil))
