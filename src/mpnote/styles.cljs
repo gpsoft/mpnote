@@ -96,7 +96,13 @@
       {:background "url('img/senza.png') no-repeat"
        :background-size :contain}]]]
    [:.annotation-col
-    {:width (px annotation-width)}]
+    {:width (px annotation-width)
+     :position :relative
+     :margin-top (px key-height)
+     :overflow :hidden}
+    [:.bar-no
+     {:position :absolute
+      :left :4px}]]
    [:.main-col
     {:display :flex
      :flex-direction :column
