@@ -90,9 +90,10 @@
 
 (re-frame/reg-event-fx
   ::play-pause
-  (fn-traced
+  (fn
     [{:keys [db]} _]
-    (let [playing? (:playing? db)]
+    (let [playing? (:playing? db)
+          tempo (get-in db [:score :tempo] 120)]
       (if playing?
         {:db (assoc db :playing? false)
          :interval {:action :cancel
@@ -100,7 +101,7 @@
         {:db (assoc db :playing? true)
          :interval {:action :start
                     :id :play
-                    :frequency 1500
+                    :frequency (max 300 (/ 60000 tempo))
                     :event [::move-step true]}}))))
 
 (defn ignore-move?
