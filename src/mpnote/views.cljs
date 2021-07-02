@@ -15,6 +15,10 @@
         :target "_blank"}
        title])))
 
+(defn read-mpnote []
+  [:div.btn.read-mpnote
+   {:on-click #(re-frame/dispatch [::events/toggle-dialog true])}])
+
 (defn top-in-tl
   [step-ix]
   (let [scroll-top (re-frame/subscribe [::subs/scroll-top])]
@@ -172,6 +176,36 @@
       ""]])
   )
 
+(defn dialog []
+  (let [dialog-info (re-frame/subscribe [::subs/dialog-info])
+        [dialog-state] @dialog-info]
+    [:div.dialog-overlay
+     {:class (if (= dialog-state :close) "" :dialog-open)}
+     [:div.dialog-wrap
+      [:div.dialog-title
+       "レッスンデータ読み込み"]
+      [:div.dialog-form
+       [:div.dialog-item
+        [:div.form-label "手元のファイルから選ぶ:"]
+        [:input.form-input
+         {:type :file
+          :name :from-fs}]]
+       [:div.dialog-item
+        [:div.form-label "ネット上のファイルを読む(url):"]
+        [:input.form-input
+         {:type :text
+          :name :from-net
+          :size 300}]]
+       [:div.dialog-panel
+        [:button.btn.ok
+         {:on-click #(js/console.log %)
+          :disabled (= dialog-state :busy)}
+         "決定"]
+        [:button.btn.cancel
+         {:on-click #(re-frame/dispatch [::events/toggle-dialog false])
+          :disabled (= dialog-state :busy)}
+         "キャンセル"]]]]]))
+
 (defn main-panel []
   (let [info (re-frame/subscribe [::subs/control-panel-info])
         [dragging-control-panel?] @info]
@@ -185,6 +219,7 @@
      [:header.header
       [:h1.brand
        "ピアノ教室のおと"]
+      (read-mpnote)
       (score-info)]
      [:div.main-container
       (indicator)
@@ -193,4 +228,5 @@
        (timeline)]
       (annotation)]
      (control-panel)
+     (dialog)
      ]))

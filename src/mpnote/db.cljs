@@ -506,6 +506,8 @@
 (def default-db
   {
    :cur-step-ix 0
+   :playing? false
+   :dialog-state :close
    :scroll-top initial-scroll-top
    :control-panel-pos [0 0]
    :dragging-control-panel-from nil

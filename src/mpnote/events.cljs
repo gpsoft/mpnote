@@ -158,3 +158,9 @@
                  (move-control-panel x y)
                  (assoc :dragging-control-panel-from nil))
         db))))
+
+(re-frame/reg-event-db
+  ::toggle-dialog
+  (fn
+    [db [_ open?]]
+    (assoc db :dialog-state (if open? :open :close))))
