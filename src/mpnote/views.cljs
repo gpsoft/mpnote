@@ -198,7 +198,7 @@
           :size 300}]]
        [:div.dialog-panel
         [:button.btn.ok
-         {:on-click #(js/console.log %)
+         {:on-click #(re-frame/dispatch [::events/read-score])
           :disabled (= dialog-state :busy)}
          "決定"]
         [:button.btn.cancel

@@ -1,8 +1,10 @@
 (ns mpnote.events
   (:require
+   [clojure.edn :as edn]
    [re-frame.core :as re-frame]
    [mpnote.db :as db]
    [mpnote.styles :as styles]
+   [mpnote.utils :as u]
    [day8.re-frame.tracing :refer-macros [fn-traced]]
    ))
 
@@ -25,6 +27,13 @@
   :interval
   interval-handler)
 
+(re-frame/reg-fx
+  :read-score
+  (fn [{:keys [path event]}]
+    (u/upload! "input[name=from-fs]"
+               #(re-frame/dispatch (conj event (edn/read-string %)))))
+  )
+
 (re-frame/reg-event-db
  ::initialize-db
  (fn-traced [_ _]
@@ -33,7 +42,7 @@
 (defn scroll-top
   [cur-top cur-step-ix]
   (let [step-top (styles/step-top cur-step-ix)
-        vh (-> (.querySelector js/document ".jsTimeline")
+        vh (-> (u/dom ".jsTimeline")
                (.getBoundingClientRect)
                (.-height))
         min-top db/initial-scroll-top
@@ -78,6 +87,7 @@
   (first [])
   (last nil)
   )
+
 (re-frame/reg-event-fx
   ::play-pause
   (fn-traced
@@ -147,7 +157,6 @@
   (fn
     [db [_ ev]]
     (let [[t [x y]] (parse-drag-event ev)]
-      (js/console.log (clj->js (parse-drag-event ev)))
       (condp = t
         :start (if (drag-target? ev)
                  (assoc db :dragging-control-panel-from [x y])
@@ -164,3 +173,19 @@
   (fn
     [db [_ open?]]
     (assoc db :dialog-state (if open? :open :close))))
+
+(re-frame/reg-event-db
+  ::load-score
+  (fn
+    [db [_ score]]
+    (assoc db :score (db/enrich-score score)
+           :dialog-state :close)))
+
+(re-frame/reg-event-fx
+  ::read-score
+  (fn-traced
+    [{:keys [db]} _]
+    {:db (assoc db :dialog-state :busy)
+     :read-score {; :path ""
+                :event [::load-score]}}))
+
