@@ -182,6 +182,8 @@
     (try
       (let [score (edn/read-string score-edn)]
         (assoc db :score (db/enrich-score score)
+               :cur-step-ix 0
+               :scroll-top db/initial-scroll-top
                :dialog-state :close))
       (catch :default e
         (js/alert (str "読み込みに失敗しました。"
