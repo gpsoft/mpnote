@@ -6,6 +6,7 @@
    [mpnote.styles :as styles]
    [mpnote.utils :as u]
    [day8.re-frame.tracing :refer-macros [fn-traced]]
+   [ajax.core :as ajax]
    ))
 
 (defonce interval-handler
@@ -176,7 +177,7 @@
 
 (re-frame/reg-event-db
   ::load-score
-  (fn
+  (fn-traced
     [db [_ score-edn]]
     (try
       (let [score (edn/read-string score-edn)]
@@ -192,6 +193,16 @@
                        (ex-data e)))
         (assoc db :dialog-state :open)))))
 
+(re-frame/reg-event-db
+  ::load-score-url-ng
+  (fn-traced
+    [db [_ a]]
+    (js/alert (str "読み込みに失敗しました。"
+                   \newline
+                   "URLを確認してください。"
+                   ))
+    (assoc db :dialog-state :open)))
+
 (re-frame/reg-event-fx
   ::load-score-file
   (fn-traced
@@ -199,4 +210,16 @@
     {:db (assoc db :dialog-state :busy)
      :read-file {:selector selector
                  :event [::load-score]}}))
+
+(re-frame/reg-event-fx
+  ::load-score-url
+  (fn-traced
+    [{:keys [db]} [_ url]]
+    {:db (assoc db :dialog-state :busy)
+     :http-xhrio {:method :get
+                  :uri url
+                  :timeout 10000
+                  :response-format (ajax/raw-response-format)
+                  :on-success [::load-score]
+                  :on-failure [::load-score-url-ng]}}))
 
