@@ -55,7 +55,12 @@
         (aset fr "onload" #(cont (aget % "target" "result")))
         (.readAsText fr fil))
       (cont nil))
-    #_(aset inp "value" "")))
+    (aset inp "value" "")))
+(defn uploading-filename
+  [selector]
+  (let [inp (dom selector)
+        fil (aget inp "files" 0)]
+    (when fil (.-name fil))))
 
 (defn download!
   [selector data mime fname]
@@ -70,4 +75,5 @@
 
 (comment
   (upload! "input[name=from-fs]" (fn [s] (-> (edn/read-string s) :title prn)))
+  (uploading-filename "input[name=from-fs]")
   )

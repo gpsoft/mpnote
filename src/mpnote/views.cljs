@@ -4,6 +4,7 @@
    [mpnote.styles :as styles]
    [mpnote.subs :as subs]
    [mpnote.events :as events]
+   [mpnote.utils :as u]
    ))
 
 (defn score-info []
@@ -15,8 +16,8 @@
         :target "_blank"}
        title])))
 
-(defn read-mpnote []
-  [:div.btn.read-mpnote
+(defn read-score []
+  [:div.btn.read-score
    {:on-click #(re-frame/dispatch [::events/toggle-dialog true])}])
 
 (defn top-in-tl
@@ -176,6 +177,16 @@
       ""]])
   )
 
+(defn submit-dialog []
+  (let [selector "input[name=from-fs]"
+        has-file? (u/uploading-filename selector)
+        url (.-value (u/dom "input[name=from-net]"))]
+    (if has-file?
+      (re-frame/dispatch [::events/load-score-file selector])
+      (if (not-empty url)
+        (re-frame/dispatch [::events/load-score-url url])
+        (js/alert "ファイルを選ぶか、URLを入力してくださいな。")))))
+
 (defn dialog []
   (let [dialog-info (re-frame/subscribe [::subs/dialog-info])
         [dialog-state] @dialog-info]
@@ -183,7 +194,7 @@
      {:class (if (= dialog-state :close) "" :dialog-open)}
      [:div.dialog-wrap
       [:div.dialog-title
-       "レッスンデータ読み込み"]
+       "レッスンメモ読み込み"]
       [:div.dialog-form
        [:div.dialog-item
         [:div.form-label "手元のファイルから選ぶ:"]
@@ -191,14 +202,14 @@
          {:type :file
           :name :from-fs}]]
        [:div.dialog-item
-        [:div.form-label "ネット上のファイルを読む(url):"]
+        [:div.form-label "ネット上のファイルを読む(URL):"]
         [:input.form-input
          {:type :text
           :name :from-net
           :size 300}]]
        [:div.dialog-panel
         [:button.btn.ok
-         {:on-click #(re-frame/dispatch [::events/read-score])
+         {:on-click submit-dialog
           :disabled (= dialog-state :busy)}
          "決定"]
         [:button.btn.cancel
@@ -219,7 +230,7 @@
      [:header.header
       [:h1.brand
        "ピアノ教室のおと"]
-      (read-mpnote)
+      (read-score)
       (score-info)]
      [:div.main-container
       (indicator)

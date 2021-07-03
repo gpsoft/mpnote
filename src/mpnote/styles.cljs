@@ -73,7 +73,7 @@
      :background-color color-lighter-main}
     [:&:visited
      {:color :inherit}]]
-   [:.btn.read-mpnote
+   [:.btn.read-score
     {:width :28px
      :height :28px
      :background "url('img/clef.png') no-repeat center"

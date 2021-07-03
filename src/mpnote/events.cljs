@@ -28,11 +28,10 @@
   interval-handler)
 
 (re-frame/reg-fx
-  :read-score
-  (fn [{:keys [path event]}]
-    (u/upload! "input[name=from-fs]"
-               #(re-frame/dispatch (conj event (edn/read-string %)))))
-  )
+  :read-file
+  (fn [{:keys [selector event]}]
+    (u/upload! selector
+               #(re-frame/dispatch (conj event %)))))
 
 (re-frame/reg-event-db
  ::initialize-db
@@ -178,15 +177,26 @@
 (re-frame/reg-event-db
   ::load-score
   (fn
-    [db [_ score]]
-    (assoc db :score (db/enrich-score score)
-           :dialog-state :close)))
+    [db [_ score-edn]]
+    (try
+      (let [score (edn/read-string score-edn)]
+        (assoc db :score (db/enrich-score score)
+               :dialog-state :close))
+      (catch :default e
+        (js/alert (str "読み込みに失敗しました。"
+                       \newline
+                       "レッスンメモの内容を確認してください。"
+                       \newline
+                       (.-message e)
+                       \newline
+                       (ex-data e)))
+        (assoc db :dialog-state :open)))))
 
 (re-frame/reg-event-fx
-  ::read-score
+  ::load-score-file
   (fn-traced
-    [{:keys [db]} _]
+    [{:keys [db]} [_ selector]]
     {:db (assoc db :dialog-state :busy)
-     :read-score {; :path ""
-                :event [::load-score]}}))
+     :read-file {:selector selector
+                 :event [::load-score]}}))
 
