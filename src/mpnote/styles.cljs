@@ -73,6 +73,14 @@
      :background-color color-lighter-main}
     [:&:visited
      {:color :inherit}]]
+   [:.btn.read-score
+    {:width :28px
+     :height :28px
+     :background "url('img/clef.png') no-repeat center"
+     :background-size :cover
+     :pointer :cursor}
+    [:&:active
+     {:opacity 0.8}]]
    ]
   [:.main-container
    {:display :flex
@@ -187,18 +195,17 @@
     :cursor :pointer
     :padding :2px
     :padding-top :18px
-    :font-size :2rem
     :background "hsl(210deg 30% 90%) url('img/staff.png') repeat-x top"
     :border (str "3px solid " color-left-note-bd)
     :border-bottom-left-radius :6px
     :border-bottom-right-radius :6px}
    [:&::before
-    {:content "'♬'"         ;"'𝄞\\1d11e'"
+    {:content "'\\1d122'"         ;"'𝄞\\1d11e'"
      :font-size :16px
      :position :absolute
      :display :inline-block
      :line-height :16px
-     :top :-2px
+     :top :2px
      :left 0
      }]
    [:.btn
@@ -217,4 +224,56 @@
      {:background-image "url('img/play.png')"}]
     [:&.play-pause.playing
      {:background-image "url('img/pause.png')"}]]]
+  [:.dialog-overlay
+   {:position :absolute
+    :width :100vw
+    :height :100vh
+    :z-index 2
+    :display :flex
+    :visibility :hidden
+    :opacity 0
+    :justify-content :center
+    :align-items :center
+    :background-color "rgb(0,0,0,0.6)"}
+   [:&.dialog-open
+    {:visibility :visible
+     :opacity 1
+     :transition "opacity 0.5s ease"}]
+   [:.dialog-wrap
+    {:background-color color-white
+     :border (str "6px solid " color-main-text)
+     :border-radius :4px
+     :box-shadow "0 0 8px #ffffff"
+     :width :50%
+     :min-width :500px
+     :max-width :700px
+     :padding :1rem
+     }
+    [:.dialog-title
+     {:font-weight :bold
+      :font-size :1.2rem
+      :margin-bottom :8px}]
+    [(garden.selectors/> :.dialog-form :div)
+     {:margin-top :8px}]
+    [:.form-input
+     {:color :black
+      :margin-left :3em
+      :margin-right :1em
+      :max-width :80%}
+     [(garden.selectors/& (garden.selectors/attr= :type :text))
+      {:border (str "1px solid " color-main-text)
+       :border-radius :3px
+       :padding "4px 8px"
+       :size 50}]]
+    [:.dialog-panel
+     [:.btn
+      {:font-size :1rem
+       :border "1px solid #aaaaaa"
+       ; :border-radius :3px
+       :margin-right :1rem
+       :padding "4px 16px"}
+      [:&:active
+       {:opacity 0.8}]
+      [:&.ok
+       {:background-color color-left-note-bg}]]]]]
   )

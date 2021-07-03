@@ -1,9 +1,12 @@
 (ns mpnote.events
   (:require
+   [clojure.edn :as edn]
    [re-frame.core :as re-frame]
    [mpnote.db :as db]
    [mpnote.styles :as styles]
+   [mpnote.utils :as u]
    [day8.re-frame.tracing :refer-macros [fn-traced]]
+   [ajax.core :as ajax]
    ))
 
 (defonce interval-handler
@@ -25,6 +28,12 @@
   :interval
   interval-handler)
 
+(re-frame/reg-fx
+  :read-file
+  (fn [{:keys [selector event]}]
+    (u/upload! selector
+               #(re-frame/dispatch (conj event %)))))
+
 (re-frame/reg-event-db
  ::initialize-db
  (fn-traced [_ _]
@@ -33,7 +42,7 @@
 (defn scroll-top
   [cur-top cur-step-ix]
   (let [step-top (styles/step-top cur-step-ix)
-        vh (-> (.querySelector js/document ".jsTimeline")
+        vh (-> (u/dom ".jsTimeline")
                (.getBoundingClientRect)
                (.-height))
         min-top db/initial-scroll-top
@@ -78,11 +87,13 @@
   (first [])
   (last nil)
   )
+
 (re-frame/reg-event-fx
   ::play-pause
-  (fn-traced
+  (fn
     [{:keys [db]} _]
-    (let [playing? (:playing? db)]
+    (let [playing? (:playing? db)
+          tempo (get-in db [:score :tempo] 120)]
       (if playing?
         {:db (assoc db :playing? false)
          :interval {:action :cancel
@@ -90,7 +101,7 @@
         {:db (assoc db :playing? true)
          :interval {:action :start
                     :id :play
-                    :frequency 1500
+                    :frequency (max 300 (/ 60000 tempo))
                     :event [::move-step true]}}))))
 
 (defn ignore-move?
@@ -147,7 +158,6 @@
   (fn
     [db [_ ev]]
     (let [[t [x y]] (parse-drag-event ev)]
-      (js/console.log (clj->js (parse-drag-event ev)))
       (condp = t
         :start (if (drag-target? ev)
                  (assoc db :dragging-control-panel-from [x y])
@@ -158,3 +168,58 @@
                  (move-control-panel x y)
                  (assoc :dragging-control-panel-from nil))
         db))))
+
+(re-frame/reg-event-db
+  ::toggle-dialog
+  (fn
+    [db [_ open?]]
+    (assoc db :dialog-state (if open? :open :close))))
+
+(re-frame/reg-event-db
+  ::load-score
+  (fn-traced
+    [db [_ score-edn]]
+    (try
+      (let [score (edn/read-string score-edn)]
+        (assoc db :score (db/enrich-score score)
+               :dialog-state :close))
+      (catch :default e
+        (js/alert (str "読み込みに失敗しました。"
+                       \newline
+                       "レッスンメモの内容を確認してください。"
+                       \newline
+                       (.-message e)
+                       \newline
+                       (ex-data e)))
+        (assoc db :dialog-state :open)))))
+
+(re-frame/reg-event-db
+  ::load-score-url-ng
+  (fn-traced
+    [db [_ a]]
+    (js/alert (str "読み込みに失敗しました。"
+                   \newline
+                   "URLを確認してください。"
+                   ))
+    (assoc db :dialog-state :open)))
+
+(re-frame/reg-event-fx
+  ::load-score-file
+  (fn-traced
+    [{:keys [db]} [_ selector]]
+    {:db (assoc db :dialog-state :busy)
+     :read-file {:selector selector
+                 :event [::load-score]}}))
+
+(re-frame/reg-event-fx
+  ::load-score-url
+  (fn-traced
+    [{:keys [db]} [_ url]]
+    {:db (assoc db :dialog-state :busy)
+     :http-xhrio {:method :get
+                  :uri url
+                  :timeout 10000
+                  :response-format (ajax/raw-response-format)
+                  :on-success [::load-score]
+                  :on-failure [::load-score-url-ng]}}))
+

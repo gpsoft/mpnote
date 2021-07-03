@@ -5,7 +5,7 @@
 (def moonlight
   {:title "ベートーヴェン - Op.27.No.2 -「月光 - 第1楽章」 Lesson1"
    :url "https://www.youtube.com/watch?v=S73r-xb1d6c"
-   :ticks-per-bar 12
+   :tempo 120
 
    ;; stepは見た目上の1行に相当。
    ;; tickは時刻を反映。
@@ -506,6 +506,8 @@
 (def default-db
   {
    :cur-step-ix 0
+   :playing? false
+   :dialog-state :close
    :scroll-top initial-scroll-top
    :control-panel-pos [0 0]
    :dragging-control-panel-from nil

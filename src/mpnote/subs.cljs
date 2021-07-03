@@ -20,6 +20,11 @@
    (:playing? db)))
 
 (re-frame/reg-sub
+ ::dialog-info
+ (fn [db]
+   [(:dialog-state db)]))
+
+(re-frame/reg-sub
  ::scroll-top
  (fn [db]
    (:scroll-top db)))
