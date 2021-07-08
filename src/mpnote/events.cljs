@@ -176,7 +176,16 @@
     (assoc db :dialog-state (if open? :open :close))))
 
 (re-frame/reg-event-db
-  ::load-score
+  ::read-index
+  (fn-traced
+    [db [_ index-edn]]
+    (try
+      (let [index (edn/read-string index-edn)]
+        (assoc db :score-index index))
+      (catch :default e db))))
+
+(re-frame/reg-event-db
+  ::read-score
   (fn-traced
     [db [_ score-edn]]
     (try
@@ -201,7 +210,7 @@
     [db [_ a]]
     (js/alert (str "読み込みに失敗しました。"
                    \newline
-                   "URLを確認してください。"
+                   "URLが間違ってるかもしれませんね。"
                    ))
     (assoc db :dialog-state :open)))
 
@@ -211,7 +220,7 @@
     [{:keys [db]} [_ selector]]
     {:db (assoc db :dialog-state :busy)
      :read-file {:selector selector
-                 :event [::load-score]}}))
+                 :event [::read-score]}}))
 
 (re-frame/reg-event-fx
   ::load-score-url
@@ -222,6 +231,19 @@
                   :uri url
                   :timeout 10000
                   :response-format (ajax/raw-response-format)
-                  :on-success [::load-score]
+                  :on-success [::read-score]
                   :on-failure [::load-score-url-ng]}}))
+
+(re-frame/reg-event-fx
+  ::load-index
+  (fn-traced
+    [{:keys [db]} _]
+    {
+     :http-xhrio {:method :get
+                  :uri "https://gpsoft.github.io/mpnote/notes/index.edn"
+                  :timeout 10000
+                  :response-format (ajax/raw-response-format)
+                  :on-success [::read-index]
+                  ; :on-failure [::load-index-ng]
+                  }}))
 

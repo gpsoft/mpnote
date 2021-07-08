@@ -511,4 +511,5 @@
    :scroll-top initial-scroll-top
    :control-panel-pos [0 0]
    :dragging-control-panel-from nil
+   :score-index []
    :score (enrich-score moonlight)})

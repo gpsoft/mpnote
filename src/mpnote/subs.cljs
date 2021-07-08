@@ -25,6 +25,11 @@
    [(:dialog-state db)]))
 
 (re-frame/reg-sub
+ ::score-index
+ (fn [db]
+   (:score-index db)))
+
+(re-frame/reg-sub
  ::scroll-top
  (fn [db]
    (:scroll-top db)))
