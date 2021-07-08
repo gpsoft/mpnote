@@ -252,6 +252,12 @@
     [:.dialog-title
      {:font-weight :bold
       :font-size :1.2rem
+      :border-bottom (str "2px solid " color-main-text)
+      :margin-bottom :8px}]
+    [:.dialog-desc
+     {:font-family :serif
+      :font-size :0.9rem
+      :margin-left :1em
       :margin-bottom :8px}]
     [(garden.selectors/> :.dialog-form :div)
      {:margin-top :8px}]
@@ -260,11 +266,19 @@
       :margin-left :3em
       :margin-right :1em
       :max-width :80%}
-     [(garden.selectors/& (garden.selectors/attr= :type :text))
+     [#_(garden.selectors/& (garden.selectors/attr= :type :text))
+      :&.input-text
       {:border (str "1px solid " color-main-text)
        :border-radius :3px
        :padding "4px 8px"
-       :size 50}]]
+       :size 50}]
+     [:&.input-select
+      {:border (str "1px solid " color-main-text)
+       :border-radius :3px
+       :background-color :#ffffff
+       :padding "4px 8px"
+       }
+      ]]
     [:.dialog-panel
      [:.btn
       {:font-size :1rem

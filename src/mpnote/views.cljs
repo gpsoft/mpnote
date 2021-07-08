@@ -180,33 +180,55 @@
 (defn submit-dialog []
   (let [selector "input[name=from-fs]"
         has-file? (u/uploading-filename selector)
-        url (.-value (u/dom "input[name=from-net]"))]
+        url (.-value (u/dom "input[name=from-net]"))
+        index-url (if-let [sel (u/dom "select[name=from-index]")]
+                    (.-value sel) "")]
     (if has-file?
       (re-frame/dispatch [::events/load-score-file selector])
       (if (not-empty url)
         (re-frame/dispatch [::events/load-score-url url])
-        (js/alert "ファイルを選ぶか、URLを入力してくださいな。")))))
+        (if (not-empty index-url)
+          (re-frame/dispatch [::events/load-score-url index-url])
+          (js/alert "読み込みたいレッスンメモを指定してくださいな。"))))))
+
+(defn score-options [scores]
+  (doall (map-indexed
+           (fn [ix {:keys [name url]}]
+             [:option
+              {:value url
+               :key ix}
+              name]) scores)))
 
 (defn dialog []
   (let [dialog-info (re-frame/subscribe [::subs/dialog-info])
-        [dialog-state] @dialog-info]
+        [dialog-state] @dialog-info
+        score-index (re-frame/subscribe [::subs/score-index])]
     [:div.dialog-overlay
      {:class (if (= dialog-state :close) "" :dialog-open)}
      [:div.dialog-wrap
       [:div.dialog-title
-       "レッスンメモ読み込み"]
+       "レッスンメモ読み込み♬"]
+      [:p.dialog-desc
+       "下記の、いずれかの方法でレッスンメモを読み込みます。"]
       [:div.dialog-form
        [:div.dialog-item
         [:div.form-label "手元のファイルから選ぶ:"]
-        [:input.form-input
+        [:input.form-input.input-file
          {:type :file
           :name :from-fs}]]
        [:div.dialog-item
         [:div.form-label "ネット上のファイルを読む(URL):"]
-        [:input.form-input
+        [:input.form-input.input-text
          {:type :text
           :name :from-net
           :size 300}]]
+       (if (not-empty @score-index)
+         [:div.dialog-item
+          [:div.form-label "用意されたメモの中から選ぶ:"]
+          [:select.form-input.input-select
+           {:name :from-index}
+           [:option]
+           (score-options @score-index)]])
        [:div.dialog-panel
         [:button.btn.ok
          {:on-click submit-dialog
