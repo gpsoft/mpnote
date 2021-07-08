@@ -148,6 +148,10 @@
   (.preventDefault ev)
   (re-frame/dispatch [::events/play-pause]))
 
+(defn play-speed [ev faster?]
+  (.preventDefault ev)
+  (re-frame/dispatch [::events/play-speed faster?]))
+
 (defn control-panel-dragger
   [ev]
   (re-frame/dispatch [::events/drag-control-panel ev]))
@@ -166,11 +170,22 @@
       {:href :#
        :on-click #(seek-bar % false)}
       ""]
-     [:a.btn.play-pause
-      {:href :#
-       :class (if @playing? :playing "")
-       :on-click #(play-pause %)}
-      ""]
+     [:div.player
+      [:div
+       [:a.btn.play-pause
+        {:href :#
+         :class (if @playing? :playing "")
+         :on-click #(play-pause %)}
+        ""]]
+      [:div.play-speed-panel
+       [:a.btn.play-faster
+        {:href :#
+         :on-click #(play-speed % true)}
+        ""]
+       [:a.btn.play-slower
+        {:href :#
+         :on-click #(play-speed % false)}
+        ""]]]
      [:a.btn.fast-forward
       {:href :#
        :on-click #(seek-bar % true)}

@@ -507,6 +507,7 @@
   {
    :cur-step-ix 0
    :playing? false
+   :tempo-bias 0
    :dialog-state :close
    :scroll-top initial-scroll-top
    :control-panel-pos [0 0]
