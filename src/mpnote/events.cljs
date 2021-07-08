@@ -18,6 +18,9 @@
                       (keys @live-intervals)))
         :start (swap! live-intervals
                       assoc id (js/setInterval #(re-frame/dispatch event) frequency))
+        :restart (do (js/clearInterval (get @live-intervals id))
+                     (swap! live-intervals
+                            assoc id (js/setInterval #(re-frame/dispatch event) frequency)))
         :cancel (do (js/clearInterval (get @live-intervals id))
                     (swap! live-intervals dissoc id))))))
 
@@ -88,12 +91,27 @@
   (last nil)
   )
 
+(defn playing-tempo
+  [db]
+  (get-in db [:score :tempo] 120))
+
+(defn frequency
+  [db]
+  (let [tempo (playing-tempo db)
+        tempo-bias (:tempo-bias db)]
+    (max 200 (/ 60000 (+ tempo tempo-bias)))))
+
+(defn inc-tempo-bias
+  [db faster?]
+  (let [tempo (playing-tempo db)
+        tempo-bias (:tempo-bias db)]
+    (max (- 1 tempo) (+ tempo-bias (if faster? 10 -10)))))
+
 (re-frame/reg-event-fx
   ::play-pause
   (fn
     [{:keys [db]} _]
-    (let [playing? (:playing? db)
-          tempo (get-in db [:score :tempo] 120)]
+    (let [playing? (:playing? db)]
       (if playing?
         {:db (assoc db :playing? false)
          :interval {:action :cancel
@@ -101,8 +119,22 @@
         {:db (assoc db :playing? true)
          :interval {:action :start
                     :id :play
-                    :frequency (max 300 (/ 60000 tempo))
+                    :frequency (frequency db)
                     :event [::move-step true]}}))))
+
+(re-frame/reg-event-fx
+  ::play-speed
+  (fn
+    [{:keys [db]} [_ faster?]]
+    (let [playing? (:playing? db)
+          tempo-bias (inc-tempo-bias db faster?)]
+      (if playing?
+        {:db (assoc db :tempo-bias tempo-bias)
+         :interval {:action :restart
+                    :id :play
+                    :frequency (frequency db)
+                    :event [::move-step true]}}
+        {:db (assoc db :tempo-bias tempo-bias)}))))
 
 (defn ignore-move?
   [from-x from-y to-x to-y]

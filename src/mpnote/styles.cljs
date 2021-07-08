@@ -223,7 +223,25 @@
     [:&.play-pause
      {:background-image "url('img/play.png')"}]
     [:&.play-pause.playing
-     {:background-image "url('img/pause.png')"}]]]
+     {:background-image "url('img/pause.png')"}]
+    [:&.play-faster
+     {:background-image "url('img/faster.png')"
+      :top :-4px}]
+    [:&.play-slower
+     {:background-image "url('img/slower.png')"
+      :bottom :-4px}]
+    ]
+   [:.player
+    {:width :100px}
+    [:.play-speed-panel
+     [:.btn
+      {:position :relative
+       :width :32px
+       :height :32px
+       :background-color "hsl(24deg 100% 67%)"
+       :border-radius :50%}]]]
+   [(garden.selectors/> :.player :div)
+    {:display :inline-block}]]
   [:.dialog-overlay
    {:position :absolute
     :width :100vw
