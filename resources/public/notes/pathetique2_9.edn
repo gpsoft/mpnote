@@ -46,6 +46,7 @@
            ]}
 
   {
+   :pedal :off
    :notes [
            {:note-no 59 :hand :right :finger-no 1 :length 1}
            {:note-no 63 :hand :right :finger-no 2 :length 1}
@@ -84,6 +85,7 @@
            ]}
 
   {:bar-top? true
+   :pedal :on
    :notes [
            {:note-no 58 :hand :left :finger-no 2 :length 4}
            {:note-no 61 :hand :right :finger-no 1 :length 1}
@@ -111,6 +113,7 @@
            ]}
 
   {
+   :pedal :off
    :notes [
            {:note-no 58 :hand :left :finger-no 2 :length 1}
            {:note-no 61 :hand :right :finger-no 1 :length 1}
@@ -188,6 +191,7 @@
            ]}
 
   {
+   :pedal :off
    :notes [
            {:note-no 59 :hand :right :finger-no 1 :length 1}
            {:note-no 63 :hand :right :finger-no 2 :length 1}
@@ -245,6 +249,7 @@
            ]}
 
   {:bar-top? true
+   :pedal :on
    :notes [
            {:note-no 51 :hand :left :finger-no 3 :length 4}
            {:note-no 58 :hand :right :finger-no 1 :length 1}
@@ -272,6 +277,7 @@
            ]}
 
   {
+   :pedal :off
    :notes [
            {:note-no 51 :hand :left :finger-no 2 :length 1}
            {:note-no 58 :hand :right :finger-no 1 :length 1}
@@ -334,7 +340,6 @@
            ]}
 
   {:bar-top? true
-   :pedal :on
    :notes [
            {:note-no 44 :hand :left :finger-no 3 :length 3}
            {:note-no 59 :hand :right :finger-no 1 :length 1}
@@ -412,6 +417,7 @@
            ]}
 
   {:bar-top? true
+   :pedal :on
    :notes [
            {:note-no 45 :hand :left :finger-no 5 :length 1}
            {:note-no 47 :hand :left :finger-no 4 :length 1}
@@ -464,6 +470,7 @@
            ]}
 
   {
+   :pedal :on
    :notes [
            {:note-no 44 :hand :left :finger-no 5 :length 1}
            {:note-no 47 :hand :left :finger-no 4 :length 1}
@@ -516,6 +523,7 @@
            ]}
 
   {:bar-top? true
+   :pedal :on
    :notes [
            {:note-no 49 :hand :left :finger-no 5 :length 1}
            {:note-no 52 :hand :left :finger-no 3 :length 1}
@@ -568,6 +576,7 @@
            ]}
 
   {
+   :pedal :on
    :notes [
            {:note-no 47 :hand :left :finger-no 5 :length 1}
            {:note-no 52 :hand :left :finger-no 3 :length 1}
@@ -594,6 +603,7 @@
            ]}
 
   {
+   :pedal :on
    :notes [
            {:note-no 35 :hand :left :finger-no 5 :length 1}
            {:note-no 47 :hand :left :finger-no 1 :length 1}
@@ -616,6 +626,7 @@
            ]}
 
   {:bar-top? true
+   :pedal :on
    :notes [
            {:note-no 40 :hand :left :finger-no 5 :length 3}
            {:note-no 52 :hand :left :finger-no 1 :length 3}
@@ -637,6 +648,7 @@
            ]}
 
   {
+   :pedal :off
    :notes [
            {:note-no 56 :hand :right :finger-no 1 :length 1}
            {:note-no 59 :hand :right :finger-no 2 :length 1}
@@ -689,9 +701,6 @@
            {:note-no 56 :hand :right :finger-no 1 :length 1}
            {:note-no 59 :hand :right :finger-no 2 :length 1}
            ]}
-
-  {
-   :notes []}
 
   ]
  }
