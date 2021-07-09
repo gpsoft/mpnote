@@ -49,7 +49,7 @@
                (.getBoundingClientRect)
                (.-height))
         min-top db/initial-scroll-top
-        max-top (/ vh 2)]
+        max-top (/ vh 5)]
     (- (max (min (+ cur-top step-top) max-top) min-top) step-top)))
 
 (defn move-to

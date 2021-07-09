@@ -7,8 +7,8 @@
     [garden.units :refer [deg px]]
     [garden.color :refer [rgba]]))
 
-(def step-height 30)
-(def note-line-height 20)
+(def step-height 22)
+(def note-line-height 18)
 (def note-height (+ note-line-height 2 2)) ;padding and border
 (def key-height 60)
 (def pedal-height 32)
@@ -121,7 +121,19 @@
      [:.keys-3 {:flex-grow 3}]
      [:.keys-1 {:flex-grow 1}]]
     [:.keys-88
-     {:height (px key-height)}]
+     {:height (px key-height)}
+     [:.key-1
+      [(garden.selectors/& (garden.selectors/attr= :data-note-no :60) (garden.selectors/before))
+       {:content "''"
+        :display :inline-block
+        :width :12px
+        :height :12px
+        :position :absolute
+        :bottom :4px
+        :left :50%
+        :transform "translateX(-50%)"
+        :border-radius :50%
+        :background-color :red}]]]
     [:.timeline
      {:min-height :400px    ;See min-height of body
       :position :relative
@@ -137,7 +149,7 @@
        ; :overflow :hidden
        }]
      [(garden.selectors/+ :.key-1 :.key-1)
-      {:border-left "1px solid #dddddd"}]]
+      {:border-left "1px solid #bbbbbb"}]]
     [:.keys-88 {}
      [:.white-key {:background-color color-white}]
      [:.black-key {:background-color color-black}]]
