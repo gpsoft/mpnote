@@ -15,5 +15,6 @@
 /.shadow-cljs/
 
 # for release
+/docs/notes/a.edn
 /docs/js/compiled/*
 !/docs/js/compiled/app.js
