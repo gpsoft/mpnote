@@ -49,7 +49,8 @@
    [:div.key-1
     {:class (str (name black-white) "-key")
      :key no
-     :data-note-no no}
+     :data-note-no no
+     :on-click #(when (= no 60) (re-frame/dispatch [::events/toggle-full-keys]))}
     (when tl? (key-1-for-tl no))]))
 
 (defn keys-3
@@ -100,17 +101,44 @@
   (let [tops (re-frame/subscribe [::subs/bar-tops])]
     (doall (map vbar-top @tops))))
 
+(defn octave-nos []
+  (map #(+ (* % 12) 24) (range 7)))
+
+(defn last-no-in-octave
+  [no]
+  (let [octave-no (quot no 12)]
+    (->> (range 12)
+         (map #(+ no %))
+         (take-while #(= (quot % 12) octave-no))
+         last)))
+
+(defn keys-in-range
+  ;; keys-12が、曲のレンジ内に含まれるか?
+  [[min-note-no max-note-no] first-key-note-no]
+  (if (= first-key-note-no 60)
+    true
+    (let [max-note-no (+ max-note-no 12) ;; 右側は余白多め
+          last-key-note-no (last-no-in-octave first-key-note-no)]
+      (and (<= first-key-note-no max-note-no)
+           (>= last-key-note-no min-note-no)))))
+
 (defn keys-88
   ([] (keys-88 false))
   ([tl?]
-   [:div
-    {:class (if tl? [:timeline :jsTimeline] :keys-88)}
-    (keys-3 21 tl?)
-    (doall (map #(keys-12 (+ (* % 12) 24) tl?) (range 7)))
-    (keys-1 108 tl?)
-    (when tl? (cur-step))
-    (when tl? (bar-tops))
-    ]))
+   (let [full? (re-frame/subscribe [::subs/full-keys?])
+         info (re-frame/subscribe [::subs/score-info])
+         [_ _ min-max] @info]
+     [:div
+      {:class (if tl? [:timeline :jsTimeline] :keys-88)}
+      (when (or @full? (keys-in-range min-max 21)) (keys-3 21 tl?))
+      (->> (octave-nos)
+           (filter #(or @full? (keys-in-range min-max %)))
+           (map #(keys-12 % tl?))
+           doall)
+      (when (or @full? (keys-in-range min-max 108)) (keys-1 108 tl?))
+      (when tl? (cur-step))
+      (when tl? (bar-tops))
+      ])))
 (defn timeline [] (keys-88 true))
 
 (defn vpedal

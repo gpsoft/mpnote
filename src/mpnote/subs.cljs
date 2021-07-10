@@ -6,8 +6,10 @@
  ::score-info
  (fn [db]
    (let [title (get-in db [:score :title])
-         url (get-in db [:score :url])]
-     [title url])))
+         url (get-in db [:score :url])
+         min-note-no (get-in db [:score :min-note-no])
+         max-note-no (get-in db [:score :max-note-no])]
+     [title url [min-note-no max-note-no]])))
 
 (re-frame/reg-sub
  ::cur-step
@@ -18,6 +20,11 @@
  ::playing?
  (fn [db]
    (:playing? db)))
+
+(re-frame/reg-sub
+ ::full-keys?
+ (fn [db]
+   (:full-keys? db)))
 
 (re-frame/reg-sub
  ::dialog-info
