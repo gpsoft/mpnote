@@ -1,4 +1,6 @@
-(ns mpnote.db)
+(ns mpnote.db
+  (:require
+    [mpnote.utils :as u]))
 
 (def initial-scroll-top 20)
 
@@ -497,16 +499,29 @@
      (inc ix)
      (+ tick weight)]))
 
+(defn all-notes
+  [score]
+  (->> (:steps score)
+       (mapcat (fn [step]
+                 (:notes step)))))
+
 (defn enrich-score
   [{:keys [steps] :as score}]
   (let [steps (first (reduce enrich-step [[] 0 0] steps))
-        steps (append-dummy-notes steps)]
-    (assoc score :steps steps)))
+        steps (append-dummy-notes steps)
+        all-note-nos (->> score
+                          all-notes
+                          (map #(:note-no %)))]
+    (assoc score
+           :steps steps
+           :max-note-no (apply max all-note-nos)
+           :min-note-no (apply min all-note-nos))))
 
 (def default-db
   {
    :cur-step-ix 0
    :playing? false
+   :full-keys? false
    :tempo-bias 0
    :dialog-state :close
    :scroll-top initial-scroll-top

@@ -96,10 +96,11 @@
   (get-in db [:score :tempo] 120))
 
 (defn frequency
-  [db]
-  (let [tempo (playing-tempo db)
-        tempo-bias (:tempo-bias db)]
-    (max 200 (/ 60000 (+ tempo tempo-bias)))))
+  ([db] (frequency db nil))
+  ([db bias]
+   (let [tempo (playing-tempo db)
+         tempo-bias (or bias (:tempo-bias db))]
+     (max 200 (/ 60000 (+ tempo tempo-bias))))))
 
 (defn inc-tempo-bias
   [db faster?]
@@ -132,7 +133,7 @@
         {:db (assoc db :tempo-bias tempo-bias)
          :interval {:action :restart
                     :id :play
-                    :frequency (frequency db)
+                    :frequency (frequency db tempo-bias)
                     :event [::move-step true]}}
         {:db (assoc db :tempo-bias tempo-bias)}))))
 
@@ -200,6 +201,13 @@
                  (move-control-panel x y)
                  (assoc :dragging-control-panel-from nil))
         db))))
+
+(re-frame/reg-event-db
+  ::toggle-full-keys
+  (fn
+    [db _]
+    (let [full? (:full-keys? db)]
+      (assoc db :full-keys? (not full?)))))
 
 (re-frame/reg-event-db
   ::toggle-dialog

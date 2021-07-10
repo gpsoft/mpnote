@@ -4,7 +4,7 @@
 
  :steps
  [
-  {:bar-top? true
+  {:bar-top? true ;1
    :notes [
            {:note-no 44 :hand :left :finger-no 5 :length 1}
            ]}
@@ -32,7 +32,7 @@
 
   {:notes []} {:notes []} {:notes []}
 
-  {:bar-top? true
+  {:bar-top? true ;2
    :notes [
            {:note-no 44 :hand :left :finger-no 5 :length 1}
            ]}
@@ -65,7 +65,7 @@
            {:note-no 63 :hand :right :finger-no 1 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;3
    :notes [
            {:note-no 44 :hand :left :finger-no 5 :length 1}
            {:note-no 63 :hand :right :finger-no 1 :length 1}
@@ -73,7 +73,7 @@
 
   {
    :notes [
-           {:note-no 51 :hand :left :finger-no 3 :length 1}
+           {:note-no 51 :hand :left :finger-no 2 :length 1}
            {:note-no 68 :hand :right :finger-no 2 :length 6}
            ]}
 
@@ -84,7 +84,7 @@
 
   {
    :notes [
-           {:note-no 51 :hand :left :finger-no 3 :length 1}
+           {:note-no 51 :hand :left :finger-no 4 :length 1}
            ]}
 
   {
@@ -100,7 +100,7 @@
            {:note-no 70 :hand :right :finger-no 3 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;4
    :notes [
            {:note-no 41 :hand :left :finger-no 5 :length 1}
            {:note-no 70 :hand :right :finger-no 3 :length 1}
@@ -139,7 +139,7 @@
            {:note-no 68 :hand :right :finger-no 2 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;5
    :notes [
            {:note-no 48 :hand :left :finger-no 5 :length 1}
            {:note-no 75 :hand :right :finger-no 5 :length 8}
@@ -167,7 +167,7 @@
 
   {:notes []} {:notes []} {:notes []}
 
-  {:bar-top? true
+  {:bar-top? true ;6
    :notes [
            {:note-no 48 :hand :left :finger-no 5 :length 1}
            ]}
@@ -204,7 +204,7 @@
            {:note-no 75 :hand :right :finger-no 4 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;7
    :notes [
            {:note-no 49 :hand :left :finger-no 5 :length 1}
            {:note-no 75 :hand :right :finger-no 4 :length 1}
@@ -245,9 +245,9 @@
            {:note-no 72 :hand :right :finger-no 2 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;8
    :notes [
-           {:note-no 47 :hand :left :finger-no 5 :length 1}
+           {:note-no 46 :hand :left :finger-no 5 :length 1}
            {:note-no 65 :hand :right :finger-no 1 :length 1}
            {:note-no 73 :hand :right :finger-no 3 :length 1}
            ]}
@@ -286,7 +286,7 @@
            {:note-no 68 :hand :right :finger-no 3 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;9
    :notes [
            {:note-no 39 :hand :left :finger-no 5 :length 1}
            {:note-no 61 :hand :right :finger-no 1 :length 4}
@@ -324,7 +324,7 @@
 
   {:notes []}
 
-  {:bar-top? true
+  {:bar-top? true ;10
    :notes [
            {:note-no 39 :hand :left :finger-no 5 :length 1}
            ]}
@@ -336,18 +336,18 @@
 
   {
    :notes [
-           {:note-no 56 :hand :left :finger-no 4 :length 1}
+           {:note-no 56 :hand :left :finger-no 3 :length 1}
            ]}
 
   {
    :notes [
-           {:note-no 58 :hand :left :finger-no 3 :length 1}
+           {:note-no 58 :hand :left :finger-no 2 :length 1}
            ]}
 
   {
    :notes [
-           {:note-no 61 :hand :left :finger-no 2 :length 2}
-           {:note-no 65 :hand :left :finger-no 1 :length 2}
+           {:note-no 61 :hand :right :finger-no 1 :length 2}
+           {:note-no 65 :hand :right :finger-no 2 :length 2}
            ]}
 
   {:notes []}
@@ -364,7 +364,7 @@
            {:note-no 63 :hand :right :finger-no 2 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;11
    :notes [
            {:note-no 44 :hand :left :finger-no 5 :length 1}
            {:note-no 58 :hand :right :finger-no 1 :length 1}
@@ -374,7 +374,7 @@
 
   {
    :notes [
-           {:note-no 51 :hand :left :finger-no 3 :length 1}
+           {:note-no 51 :hand :left :finger-no 2 :length 1}
            {:note-no 68 :hand :right :finger-no 5 :length 6}
            ]}
 
@@ -406,7 +406,7 @@
            {:note-no 70 :hand :right :finger-no 3 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;12
    :notes [
            {:note-no 41 :hand :left :finger-no 5 :length 1}
            {:note-no 67 :hand :right :finger-no 1 :length 1}
@@ -447,9 +447,9 @@
            {:note-no 68 :hand :right :finger-no 2 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;13
    :notes [
-           {:note-no 48 :hand :left :finger-no 1 :length 1}
+           {:note-no 48 :hand :left :finger-no 5 :length 1}
            {:note-no 67 :hand :right :finger-no 1 :length 8}
            {:note-no 75 :hand :right :finger-no 5 :length 8}
            ]}
@@ -476,9 +476,9 @@
 
   {:notes []} {:notes []} {:notes []}
 
-  {:bar-top? true
+  {:bar-top? true ;14
    :notes [
-           {:note-no 48 :hand :left :finger-no 1 :length 1}
+           {:note-no 48 :hand :left :finger-no 5 :length 1}
            ]}
 
   {
@@ -513,7 +513,7 @@
            {:note-no 75 :hand :right :finger-no 4 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;15
    :notes [
            {:note-no 49 :hand :left :finger-no 5 :length 1}
            {:note-no 67 :hand :right :finger-no 1 :length 1}
@@ -555,9 +555,9 @@
            {:note-no 72 :hand :right :finger-no 2 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;16
    :notes [
-           {:note-no 47 :hand :left :finger-no 5 :length 1}
+           {:note-no 46 :hand :left :finger-no 5 :length 1}
            {:note-no 65 :hand :right :finger-no 1 :length 1}
            {:note-no 73 :hand :right :finger-no 3 :length 1}
            ]}
@@ -596,12 +596,12 @@
            {:note-no 68 :hand :right :finger-no 3 :length 1}
            ]}
 
-  {:bar-top? true
+  {:bar-top? true ;17
    :notes [
            {:note-no 39 :hand :left :finger-no 5 :length 1}
            {:note-no 61 :hand :right :finger-no 1 :length 4}
-           {:note-no 68 :hand :right :finger-no 2 :length 8}
-           {:note-no 70 :hand :right :finger-no 3 :length 8}
+           {:note-no 68 :hand :right :finger-no 3 :length 8}
+           {:note-no 70 :hand :right :finger-no 4 :length 8}
            ]}
 
   {
@@ -629,12 +629,12 @@
 
   {
    :notes [
-           {:note-no 56 :hand :left :finger-no 1 :length 2}
+           {:note-no 56 :hand :left :finger-no 3 :length 2}
            ]}
 
   {:notes []}
 
-  {:bar-top? true
+  {:bar-top? true ;18
    :notes [
            {:note-no 39 :hand :left :finger-no 5 :length 1}
            ]}
@@ -653,13 +653,6 @@
    :notes [
            {:note-no 58 :hand :left :finger-no 2 :length 1}
            ]}
-
-  {
-   :notes [
-           {:note-no 61 :hand :left :finger-no 1 :length 2}
-           ]}
-
-  {:notes []}
 
   {
    :notes [

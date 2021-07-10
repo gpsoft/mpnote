@@ -126,8 +126,8 @@
       [(garden.selectors/& (garden.selectors/attr= :data-note-no :60) (garden.selectors/before))
        {:content "''"
         :display :inline-block
-        :width :12px
-        :height :12px
+        :width :10px
+        :height :10px
         :position :absolute
         :bottom :4px
         :left :50%
@@ -210,7 +210,8 @@
     :background "hsl(210deg 30% 90%) url('img/staff.png') repeat-x top"
     :border (str "3px solid " color-left-note-bd)
     :border-bottom-left-radius :6px
-    :border-bottom-right-radius :6px}
+    :border-bottom-right-radius :6px
+    :z-index 3}
    [:&::before
     {:content "'\\1d122'"         ;"'𝄞\\1d11e'"
      :font-size :16px
@@ -238,22 +239,26 @@
      {:background-image "url('img/pause.png')"}]
     [:&.play-faster
      {:background-image "url('img/faster.png')"
-      :top :-4px}]
+      :top :-10px}]
     [:&.play-slower
      {:background-image "url('img/slower.png')"
-      :bottom :-4px}]
+      :bottom :-10px}]
     ]
    [:.player
-    {:width :100px}
+    {:display :flex
+     :align-items :flex-start
+     :width :120px}
     [:.play-speed-panel
+     {:position :relative
+      :height :64px}
      [:.btn
-      {:position :relative
-       :width :32px
-       :height :32px
+      {:position :absolute
+       :width :52px
+       :height :40px
        :background-color "hsl(24deg 100% 67%)"
        :border-radius :50%}]]]
-   [(garden.selectors/> :.player :div)
-    {:display :inline-block}]]
+   #_[(garden.selectors/> :.player :div)
+    {:display :div}]]
   [:.dialog-overlay
    {:position :absolute
     :width :100vw
