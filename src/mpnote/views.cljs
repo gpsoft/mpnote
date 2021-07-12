@@ -326,7 +326,8 @@
 
 (defn main-panel []
   (let [info (re-frame/subscribe [::subs/control-panel-info])
-        [dragging-control-panel?] @info]
+        [dragging-control-panel?] @info
+        audio? (re-frame/subscribe [::subs/audio?])]
     [:div.app
      {:on-mouse-move #(when dragging-control-panel? (control-panel-dragger %))
       :on-mouse-up #(when dragging-control-panel? (control-panel-dragger %))
@@ -338,7 +339,10 @@
       [:h1.brand
        "ピアノ教室のおと"]
       (read-score)
-      (score-info)]
+      (score-info)
+      [:div.btn.speaker
+       {:class (when @audio? :speaker-on)
+        :on-click #(re-frame/dispatch [::events/toggle-audio])}]]
      [:div.main-container
       (indicator)
       [:div.main-col

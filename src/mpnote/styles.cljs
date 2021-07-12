@@ -81,6 +81,16 @@
      :pointer :cursor}
     [:&:active
      {:opacity 0.8}]]
+   [:.btn.speaker
+    {:width :28px
+     :height :28px
+     :background "url('img/speaker-off.png') no-repeat center"
+     :background-size :contain
+     :pointer :cursor}
+    [:&.speaker-on
+     {:background-image "url('img/speaker-on.png')"}]
+    [:&:active
+     {:opacity 0.8}]]
    ]
   [:.main-container
    {:display :flex

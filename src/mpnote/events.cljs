@@ -4,6 +4,7 @@
    [re-frame.core :as re-frame]
    [mpnote.db :as db]
    [mpnote.styles :as styles]
+   [mpnote.audio :as audio]
    [mpnote.utils :as u]
    [day8.re-frame.tracing :refer-macros [fn-traced]]
    [ajax.core :as ajax]
@@ -67,7 +68,18 @@
           last-step-ix (dec (count (get-in db [:score :steps])))
           step-ix (min last-step-ix (max 0 (+ step-ix (if ff? 1 -1))))
           ; step-ix (if (> step-ix last-step-ix) 0 step-ix)
+          playing? (:playing? db)
+          audio? (:audio? db)
           ]
+
+      ;; play notes
+      ;; it's an effect, but...
+      (when (and playing? audio?)
+        (let [nos (map (fn [{:keys [note-no]}] note-no)
+                       (filter (fn [{type :type :or {type :press}}] (= type :press))
+                               (:notes (nth (get-in db [:score :steps]) step-ix))))]
+          (doall (apply audio/play-notes! nos))))
+
       (move-to db step-ix))))
 
 (re-frame/reg-event-db
@@ -208,6 +220,13 @@
     [db _]
     (let [full? (:full-keys? db)]
       (assoc db :full-keys? (not full?)))))
+
+(re-frame/reg-event-db
+  ::toggle-audio
+  (fn
+    [db _]
+    (let [audio? (:audio? db)]
+      (assoc db :audio? (not audio?)))))
 
 (re-frame/reg-event-db
   ::toggle-dialog

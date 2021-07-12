@@ -5,6 +5,7 @@
    [mpnote.events :as events]
    [mpnote.views :as views]
    [mpnote.config :as config]
+   [mpnote.audio]
    [day8.re-frame.http-fx]
    ))
 
