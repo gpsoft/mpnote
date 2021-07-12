@@ -66,6 +66,7 @@
     [db [_ ff?]]
     (let [step-ix (:cur-step-ix db)
           last-step-ix (dec (count (get-in db [:score :steps])))
+          finished? (= step-ix last-step-ix)
           step-ix (min last-step-ix (max 0 (+ step-ix (if ff? 1 -1))))
           ; step-ix (if (> step-ix last-step-ix) 0 step-ix)
           playing? (:playing? db)
@@ -74,7 +75,7 @@
 
       ;; play notes
       ;; it's an effect, but...
-      (when (and playing? audio?)
+      (when (and playing? audio? (not finished?))
         (let [nos (map (fn [{:keys [note-no]}] note-no)
                        (filter (fn [{type :type :or {type :press}}] (= type :press))
                                (:notes (nth (get-in db [:score :steps]) step-ix))))]
