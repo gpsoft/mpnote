@@ -137,7 +137,7 @@
     [:.timeline
      {:min-height :400px    ;See min-height of body
       :position :relative
-      ; :overflow :hidden
+      :overflow :hidden
       :flex-grow 1}]
 
     [:.octave
