@@ -226,6 +226,10 @@
   (fn
     [db _]
     (let [audio? (:audio? db)]
+
+      (when-not audio?
+        (audio/play-notes! 60))
+
       (assoc db :audio? (not audio?)))))
 
 (re-frame/reg-event-db
