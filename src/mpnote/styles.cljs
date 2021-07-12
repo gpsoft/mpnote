@@ -123,7 +123,7 @@
     [:.keys-88
      {:height (px key-height)}
      [:.key-1
-      [(garden.selectors/& (garden.selectors/attr= :data-note-no :60) (garden.selectors/before))
+      [(garden.selectors/& :.c4-key (garden.selectors/before))
        {:content "''"
         :display :inline-block
         :width :10px
@@ -146,6 +146,7 @@
      [:.key-1
       {:flex-grow 1
        :position :relative
+       :max-width :3rem
        ; :overflow :hidden
        }]
      [(garden.selectors/+ :.key-1 :.key-1)
