@@ -137,7 +137,7 @@
     [:.timeline
      {:min-height :400px    ;See min-height of body
       :position :relative
-      :overflow :hidden
+      ; :overflow :hidden
       :flex-grow 1}]
 
     [:.octave
@@ -147,7 +147,7 @@
       {:flex-grow 1
        :position :relative
        :max-width :3rem
-       ; :overflow :hidden
+       :overflow :hidden
        }]
      [(garden.selectors/+ :.key-1 :.key-1)
       {:border-left "1px solid #bbbbbb"}]]
@@ -206,6 +206,7 @@
     :right (px (+ annotation-width 16))
     :top (px (+ key-height 60))
     :cursor :pointer
+    :touch-action :none
     :padding :2px
     :padding-top :18px
     :background "hsl(210deg 30% 90%) url('img/staff.png') repeat-x top"
