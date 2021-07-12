@@ -521,6 +521,7 @@
   {
    :cur-step-ix 0
    :playing? false
+   :audio? false
    :full-keys? false
    :tempo-bias 0
    :dialog-state :close
@@ -529,3 +530,17 @@
    :dragging-control-panel-from nil
    :score-index []
    :score (enrich-score moonlight)})
+
+(comment
+  (require '[cljs-bach.synthesis :as bach])
+  (defonce context (cljs-bach.synthesis/audio-context))
+  (identity context)
+  (defn ping [freq]
+    (cljs-bach.synthesis/connect->
+      (cljs-bach.synthesis/square freq)
+      (cljs-bach.synthesis/percussive 0.01 0.4)
+      (cljs-bach.synthesis/gain 0.1)))
+  (-> (ping 440)
+      (cljs-bach.synthesis/connect-> cljs-bach.synthesis/destination)
+      (cljs-bach.synthesis/run-with context (cljs-bach.synthesis/current-time context) 1.0))
+  )

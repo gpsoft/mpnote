@@ -7,6 +7,11 @@
    [mpnote.utils :as u]
    ))
 
+(def c4-note-no 60)
+(def left-end-note-no 21)
+(def right-end-note-no 108)
+(defn c4? [no] (= no c4-note-no))
+
 (defn score-info []
   (let [info (re-frame/subscribe [::subs/score-info])
         [title url] @info]
@@ -47,15 +52,16 @@
 (defn key-1
   ([black-white no tl?]
    [:div.key-1
-    {:class (str (name black-white) "-key")
+    {:class (str (name black-white) "-key" (when (c4? no) " c4-key"))
      :key no
      :data-note-no no
-     :on-click #(when (= no 60) (re-frame/dispatch [::events/toggle-full-keys]))}
+     :on-click #(when (c4? no) (re-frame/dispatch [::events/toggle-full-keys]))}
     (when tl? (key-1-for-tl no))]))
 
 (defn keys-3
   [no tl?]
   [:div.octave.keys-3
+   {:key no}
    (key-1 :white (+ no 0) tl?)
    (key-1 :black (+ no 1) tl?)
    (key-1 :white (+ no 2) tl?)
@@ -63,6 +69,7 @@
 
 (defn keys-1 [no tl?]
   [:div.octave.keys-1
+   {:key no}
    (key-1 :white (+ no 0) tl?)
    ]
   )
@@ -104,6 +111,11 @@
 (defn octave-nos []
   (map #(+ (* % 12) 24) (range 7)))
 
+(defn octaves []
+  (concat [[left-end-note-no 3]]
+          (map (fn [no] [no 12]) (octave-nos))
+          [[right-end-note-no 1]]))
+
 (defn last-no-in-octave
   [no]
   (let [octave-no (quot no 12)]
@@ -114,28 +126,58 @@
 
 (defn keys-in-range
   ;; keys-12が、曲のレンジ内に含まれるか?
-  [[min-note-no max-note-no] first-key-note-no]
-  (if (= first-key-note-no 60)
-    true
-    (let [max-note-no (+ max-note-no 12) ;; 右側は余白多め
-          last-key-note-no (last-no-in-octave first-key-note-no)]
-      (and (<= first-key-note-no max-note-no)
-           (>= last-key-note-no min-note-no)))))
+  ;;  - 左右、どちらかに余白を入れる
+  ;;  - C4のオクターブは、必ず入れる
+  [[min-no max-no] first-key-no]
+  (let [
+        max-no (+ max-no 12)     ;; 右側に余白
+        min-no (min min-no c4-note-no)
+        max-no (max max-no c4-note-no)
+        last-key-no (last-no-in-octave first-key-no)]
+    (and (<= first-key-no max-no)
+         (>= last-key-no min-no))))
+
+(defn add-margin-min-max
+  [[min-no max-no]]
+  (if (> (- min-no left-end-note-no)
+         (- right-end-note-no max-no))
+    [(- min-no 12) max-no]
+    [min-no (+ max-no 12)]))
+(defn optimize-min-max
+  ;; 曲のレンジを尊重しつつ、表示する鍵盤を最適化
+  ;;  - 左右、どちらかに余白を入れる
+  ;;  - C4のオクターブは、必ず入れる
+  [[min-no max-no :as min-max]]
+  (let [[min-no max-no] (add-margin-min-max min-max)
+        min-no (max left-end-note-no (min min-no c4-note-no))
+        max-no (min right-end-note-no (max max-no c4-note-no))]
+    [min-no max-no]))
+
+(defn used-octave?
+  ;; first-key-noから始まるkeys-12が、曲のレンジ内に含まれるか?
+  [[min-no max-no] [first-key-no]]
+  (let [last-key-no (last-no-in-octave first-key-no)]
+    (and (<= first-key-no max-no)
+         (>= last-key-no min-no))))
 
 (defn keys-88
   ([] (keys-88 false))
   ([tl?]
    (let [full? (re-frame/subscribe [::subs/full-keys?])
          info (re-frame/subscribe [::subs/score-info])
-         [_ _ min-max] @info]
+         [_ _ min-max] @info
+         min-max (optimize-min-max min-max)]
      [:div
       {:class (if tl? [:timeline :jsTimeline] :keys-88)}
-      (when (or @full? (keys-in-range min-max 21)) (keys-3 21 tl?))
-      (->> (octave-nos)
-           (filter #(or @full? (keys-in-range min-max %)))
-           (map #(keys-12 % tl?))
-           doall)
-      (when (or @full? (keys-in-range min-max 108)) (keys-1 108 tl?))
+      (let [octs (octaves)
+            octs (if @full?
+                   octs
+                   (filter #(used-octave? min-max %) octs))]
+        (doall (map (fn [[no num-keys]]
+                      (case num-keys
+                        1 (keys-1 no tl?)
+                        3 (keys-3 no tl?)
+                        12 (keys-12 no tl?))) octs)))
       (when tl? (cur-step))
       (when tl? (bar-tops))
       ])))
@@ -284,7 +326,8 @@
 
 (defn main-panel []
   (let [info (re-frame/subscribe [::subs/control-panel-info])
-        [dragging-control-panel?] @info]
+        [dragging-control-panel?] @info
+        audio? (re-frame/subscribe [::subs/audio?])]
     [:div.app
      {:on-mouse-move #(when dragging-control-panel? (control-panel-dragger %))
       :on-mouse-up #(when dragging-control-panel? (control-panel-dragger %))
@@ -296,7 +339,10 @@
       [:h1.brand
        "ピアノ教室のおと"]
       (read-score)
-      (score-info)]
+      (score-info)
+      [:div.btn.speaker
+       {:class (when @audio? :speaker-on)
+        :on-click #(re-frame/dispatch [::events/toggle-audio])}]]
      [:div.main-container
       (indicator)
       [:div.main-col

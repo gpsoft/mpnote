@@ -81,6 +81,16 @@
      :pointer :cursor}
     [:&:active
      {:opacity 0.8}]]
+   [:.btn.speaker
+    {:width :28px
+     :height :28px
+     :background "url('img/speaker-off.png') no-repeat center"
+     :background-size :contain
+     :pointer :cursor}
+    [:&.speaker-on
+     {:background-image "url('img/speaker-on.png')"}]
+    [:&:active
+     {:opacity 0.8}]]
    ]
   [:.main-container
    {:display :flex
@@ -123,7 +133,7 @@
     [:.keys-88
      {:height (px key-height)}
      [:.key-1
-      [(garden.selectors/& (garden.selectors/attr= :data-note-no :60) (garden.selectors/before))
+      [(garden.selectors/& :.c4-key (garden.selectors/before))
        {:content "''"
         :display :inline-block
         :width :10px
@@ -146,7 +156,8 @@
      [:.key-1
       {:flex-grow 1
        :position :relative
-       ; :overflow :hidden
+       :max-width :3rem
+       :overflow :hidden
        }]
      [(garden.selectors/+ :.key-1 :.key-1)
       {:border-left "1px solid #bbbbbb"}]]
@@ -205,6 +216,7 @@
     :right (px (+ annotation-width 16))
     :top (px (+ key-height 60))
     :cursor :pointer
+    :touch-action :none
     :padding :2px
     :padding-top :18px
     :background "hsl(210deg 30% 90%) url('img/staff.png') repeat-x top"

@@ -27,6 +27,11 @@
    (:full-keys? db)))
 
 (re-frame/reg-sub
+ ::audio?
+ (fn [db]
+   (:audio? db)))
+
+(re-frame/reg-sub
  ::dialog-info
  (fn [db]
    [(:dialog-state db)]))
