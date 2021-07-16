@@ -197,7 +197,7 @@
     {
      :pedal :on
      :notes
-     [{:note-no 53 :hand :right :finger-no 1}]}
+     [{:note-no 54 :hand :right :finger-no 1}]}
     {
      :notes
      [{:note-no 60 :hand :right :finger-no 3}]}
