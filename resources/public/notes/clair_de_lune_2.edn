@@ -1,0 +1,246 @@
+{:title "月の光 - Lesson2"
+ :url "https://www.youtube.com/watch?v=68Bg_WCh2eg"
+ :tempo 80
+
+ :steps
+ [
+  {:bar-top? true
+   :pedal :on
+   :notes [
+           {:note-no 37 :hand :left :finger-no 5 :length 1}
+           {:note-no 44 :hand :left :finger-no 3 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 53 :hand :right :finger-no 2 :length 1}
+           {:note-no 56 :hand :right :finger-no 4 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 65 :hand :left :finger-no 4 :length 4}
+           {:note-no 68 :hand :left :finger-no 2 :length 4}
+           ]}
+
+  {
+   :notes [
+           {:note-no 77 :hand :right :finger-no 3 :length 3}
+           {:note-no 80 :hand :right :finger-no 5 :length 3}
+           ]}
+
+  {:notes []} {:notes []}
+
+  {
+   :notes [
+           {:note-no 73 :hand :right :finger-no 2 :length 3}
+           {:note-no 77 :hand :right :finger-no 45 :length 4}
+           ]}
+
+  {:notes []} {:notes []}
+
+  {:bar-top? true
+   :pedal :on
+   :notes [
+           {:note-no 42 :hand :left :finger-no 5 :length 1}
+           {:note-no 49 :hand :left :finger-no 1 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 49 :hand :left :finger-no 5 :length 8}
+           {:note-no 54 :hand :left :finger-no 3 :length 8}
+           {:note-no 58 :hand :left :finger-no 2 :length 8}
+           {:note-no 61 :hand :left :finger-no 1 :length 8}
+           {:note-no 66 :hand :right :finger-no 1 :length 8}
+           {:note-no 70 :hand :right :finger-no 2 :length 8}
+           {:note-no 75 :hand :right :finger-no 4 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 77 :hand :right :finger-no 5 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 75 :hand :right :finger-no 4 :length 7}
+           ]}
+
+  {:notes []} {:notes []} {:notes []} {:notes []} {:notes []}
+
+  {:bar-top? true
+   :pedal :on
+   :notes [
+           {:note-no 41 :hand :left :finger-no 5 :length 1}
+           {:note-no 49 :hand :left :finger-no 1 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 53 :hand :left :finger-no 4 :length 2}
+           {:note-no 56 :hand :left :finger-no 2 :length 2}
+           {:note-no 61 :hand :right :finger-no 1 :length 1}
+           {:note-no 68 :hand :right :finger-no 2 :length 2}
+           {:note-no 73 :hand :right :finger-no 4 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 63 :hand :right :finger-no 1 :length 1}
+           {:note-no 75 :hand :right :finger-no 5 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 61 :hand :left :finger-no 2 :length 3}
+           {:note-no 65 :hand :left :finger-no 1 :length 3}
+           {:note-no 68 :hand :right :finger-no 1 :length 3}
+           {:note-no 73 :hand :right :finger-no 2 :length 3}
+           {:note-no 80 :hand :right :finger-no 5 :length 3}
+           ]}
+
+  {:notes []} {:notes []}
+
+  {
+   :notes [
+           {:note-no 56 :hand :left :finger-no 4 :length 3}
+           {:note-no 61 :hand :left :finger-no 2 :length 3}
+           {:note-no 65 :hand :right :finger-no 1 :length 3}
+           {:note-no 73 :hand :right :finger-no 3 :length 3}
+           {:note-no 77 :hand :right :finger-no 5 :length 4}
+           ]}
+
+  {:notes []} {:notes []}
+
+  {:bar-top? true
+   :pedal :on
+   :notes [
+           {:note-no 42 :hand :left :finger-no 5 :length 1}
+           {:note-no 49 :hand :left :finger-no 1 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 49 :hand :left :finger-no 5 :length 8}
+           {:note-no 54 :hand :left :finger-no 3 :length 8}
+           {:note-no 58 :hand :left :finger-no 2 :length 8}
+           {:note-no 61 :hand :left :finger-no 1 :length 8}
+           {:note-no 66 :hand :right :finger-no 1 :length 8}
+           {:note-no 70 :hand :right :finger-no 2 :length 8}
+           {:note-no 75 :hand :right :finger-no 4 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 77 :hand :right :finger-no 5 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 75 :hand :right :finger-no 4 :length 2}
+           ]}
+
+  {:notes []}
+
+  {
+   :notes [
+           {:note-no 73 :hand :right :finger-no 3 :length 4}
+           ]}
+
+  {:notes []} {:notes []} {:notes []}
+
+  {:bar-top? true
+   :pedal :on
+   :notes [
+           {:note-no 44 :hand :left :finger-no 5 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 53 :hand :left :finger-no 5 :length 2}
+           {:note-no 59 :hand :left :finger-no 3 :length 2}
+           {:note-no 61 :hand :right :finger-no 1 :length 1}
+           {:note-no 68 :hand :right :finger-no 2 :length 2}
+           {:note-no 73 :hand :right :finger-no 4 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 63 :hand :right :finger-no 1 :length 1}
+           {:note-no 75 :hand :right :finger-no 5 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 59 :hand :left :finger-no 3 :length 3}
+           {:note-no 61 :hand :left :finger-no 2 :length 3}
+           {:note-no 65 :hand :left :finger-no 1 :length 3}
+           {:note-no 70 :hand :right :finger-no 1 :length 1.5}
+           {:note-no 77 :hand :right :finger-no 2 :length 2.5}
+           {:note-no 82 :hand :right :finger-no 5 :length 1.5}
+           ]}
+
+  {:weight 0.5
+   :notes []}
+
+  {
+   :notes [
+           {:note-no 68 :hand :right :finger-no 1 :length 2}
+           {:note-no 80 :hand :right :finger-no 4 :length 2}
+           ]}
+
+  {:notes []}
+
+  {
+   :notes [
+           {:note-no 65 :hand :right :finger-no 1 :length 1.5}
+           {:note-no 77 :hand :right :finger-no 5 :length 2.5}
+           ]}
+
+  {:weight 0.5
+   :notes []}
+
+  {:bar-top? true
+   :pedal :on
+   :notes [
+           {:note-no 46 :hand :left :finger-no 5 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 53 :hand :left :finger-no 5 :length 8}
+           {:note-no 58 :hand :left :finger-no 3 :length 8}
+           {:note-no 63 :hand :left :finger-no 1 :length 3}
+           {:note-no 65 :hand :right :finger-no 1 :length 8}
+           {:note-no 70 :hand :right :finger-no 2 :length 6}
+           {:note-no 75 :hand :right :finger-no 4 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 77 :hand :right :finger-no 5 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 75 :hand :right :finger-no 4 :length 1}
+           ]}
+
+  {
+   :notes [
+           {:note-no 61 :hand :left :finger-no 2 :length 5}
+           {:note-no 73 :hand :right :finger-no 3 :length 3}
+           ]}
+
+  {:notes []} {:notes []}
+
+  {
+   :notes [
+           {:note-no 70 :hand :right :finger-no 2 :length 2}
+           ]}
+
+  {:notes []}
+
+  ]
+ }

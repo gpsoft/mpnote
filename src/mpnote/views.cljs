@@ -40,7 +40,7 @@
       :key step-ix
       }
      (when
-       (and (not dummy?) (pos? finger-no))
+       (and (not dummy?) (nat-int? finger-no))
        finger-no)]))
 
 (defn key-1-for-tl

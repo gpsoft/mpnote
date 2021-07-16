@@ -255,7 +255,7 @@
   {
    :notes [
            {:note-no 53 :hand :left :finger-no 2 :length 1}
-           {:note-no 75 :hand :right :finger-no 5 :length 1}
+           {:note-no 75 :hand :right :finger-no 4 :length 1}
            ]}
 
   {
@@ -565,7 +565,7 @@
   {
    :notes [
            {:note-no 53 :hand :left :finger-no 2 :length 1}
-           {:note-no 75 :hand :right :finger-no 5 :length 1}
+           {:note-no 77 :hand :right :finger-no 5 :length 1}
            ]}
 
   {
