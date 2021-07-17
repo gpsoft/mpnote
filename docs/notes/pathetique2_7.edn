@@ -38,7 +38,7 @@
 
   {
    :notes [
-           {:note-no 54 :hand :right :finger-no 1 :length 1}
+           {:note-no 51 :hand :right :finger-no 1 :length 1}
            ]}
 
   {:bar-top? true
