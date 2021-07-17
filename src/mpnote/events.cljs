@@ -94,7 +94,18 @@
           candidates (filter (fn [ix] (if ff? (> ix step-ix) (< ix step-ix))) tops)
           step-ix (if (empty? candidates)
                     (if ff? 0 (or (last tops) 0))
-                    (if ff? (first candidates) (last candidates)))]
+                    (if ff? (first candidates) (last candidates)))
+          playing? (:playing? db)
+          audio? (:audio? db)
+          ]
+      ;; play notes
+      ;; it's an effect, but...
+      (when (and playing? audio?)
+        (let [nos (map (fn [{:keys [note-no]}] note-no)
+                       (filter (fn [{type :type :or {type :press}}] (= type :press))
+                               (:notes (nth (get-in db [:score :steps]) step-ix))))]
+          (doall (apply audio/play-notes! nos))))
+
       (move-to db step-ix))))
 
 (comment
@@ -228,6 +239,8 @@
     [db _]
     (let [audio? (:audio? db)]
 
+      ;; play notes
+      ;; it's an effect, but...
       (when-not audio?
         (audio/play-notes! 60))
 

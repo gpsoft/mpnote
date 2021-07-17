@@ -17,7 +17,7 @@
         (bach/sawtooth freq))
       (bach/low-pass 600)
       (bach/adsr 0.001 0.4 0.2 0.3)
-      (bach/gain 0.1))))
+      (bach/gain 0.05))))
 
 (defn notes
   [& args]
