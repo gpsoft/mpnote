@@ -1,6 +1,6 @@
 {:title "雨だれ Lesson1",
  :url "https://www.youtube.com/watch?v=oqoPJcpt_v0",
- :tempo 120,
+ :tempo 80,
  :steps
  [{:bar-top? true,
    :notes
@@ -83,7 +83,6 @@
   {:notes [{:note-no 75, :hand :right, :finger-no 3, :length 1}]}
   {:notes [{:note-no 77, :hand :right, :finger-no 5, :length 1}]}
   {:notes [{:note-no 78, :hand :right, :finger-no 4, :length 1}]}
-  {:notes []}
   {:bar-top? true,
    :notes
    [{:note-no 49, :hand :left, :finger-no 5, :length 1}
