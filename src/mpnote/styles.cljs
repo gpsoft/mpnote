@@ -52,7 +52,9 @@
    {:position :relative
     :display :flex
     :flex-direction :column
-    :height :100vh}]
+    :height :100vh
+    :min-width :768px
+    :padding-bottom :4px}]
   [:.header
    {:display :flex
     :align-items :center
@@ -74,10 +76,10 @@
     [:&:visited
      {:color :inherit}]]
    [:.btn.read-score
-    {:width :28px
+    {:width :36px
      :height :28px
      :background "url('img/clef.png') no-repeat center"
-     :background-size :cover
+     :background-size :contain
      :pointer :cursor}
     [:&:active
      {:opacity 0.8}]]
