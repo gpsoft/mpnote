@@ -38,9 +38,16 @@
     (u/upload! selector
                #(re-frame/dispatch (conj event %)))))
 
+(defn setup-wheel-event []
+  (.addEventListener
+    js/document "wheel"
+    #(re-frame/dispatch [::move-step (pos? (.-deltaY %))])))
+
 (re-frame/reg-event-db
  ::initialize-db
  (fn-traced [_ _]
+
+   (setup-wheel-event)
    db/default-db))
 
 (defn scroll-top
