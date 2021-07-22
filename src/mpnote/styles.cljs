@@ -330,7 +330,7 @@
        }
       [:&:visited
        {:color :inherit}]
-      [:first-child
+      [:div:first-child
        {:font-weight :bold}]]]
     [:.dialog-desc
      {:font-family :serif
