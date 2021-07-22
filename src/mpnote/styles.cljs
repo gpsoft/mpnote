@@ -277,7 +277,7 @@
    {:position :absolute
     :width :100vw
     :height :100vh
-    :z-index 2
+    :z-index 4
     :display :flex
     :visibility :hidden
     :opacity 0
