@@ -41,7 +41,9 @@
 (defn setup-wheel-event []
   (.addEventListener
     js/document "wheel"
-    #(re-frame/dispatch [::move-step (pos? (.-deltaY %))])))
+    (fn [ev]
+      (when (.closest (.-target ev) ".timeline")
+        (re-frame/dispatch [::move-step (pos? (.-deltaY ev))])))))
 
 (re-frame/reg-event-db
  ::initialize-db
