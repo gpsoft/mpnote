@@ -18,6 +18,8 @@
 (def annotation-width 60)
 
 (def color-main-text  "hsl(24deg 90% 20%)")
+(def color-thick-main "hsl(24deg 68% 72%)")
+(def color-thicker-main "hsl(24deg 100% 63%)")
 (def color-light-main "hsl(24deg 70% 90%)")
 (def color-lighter-main "hsl(24deg 100% 93%)")
 (def color-white :#f5f5f5)
@@ -28,6 +30,8 @@
 (def color-left-note-bd "hsl(210deg 80% 70%)")
 (def color-right-note-bg "hsl(118deg 80% 80%)")
 (def color-right-note-bd "hsl(118deg 80% 70%)")
+(def color-error "hsl(3deg 90% 34%)")
+(def color-error-bg "hsl(3deg 100% 92%)")
 
 ; (defcssfn linear-gradient
 ;  ([c1 p1 c2 p2]
@@ -269,7 +273,7 @@
       {:position :absolute
        :width :52px
        :height :40px
-       :background-color "hsl(24deg 100% 67%)"
+       :background-color color-thicker-main
        :border-radius :50%}]]]
    #_[(garden.selectors/> :.player :div)
     {:display :div}]]
@@ -277,7 +281,7 @@
    {:position :absolute
     :width :100vw
     :height :100vh
-    :z-index 2
+    :z-index 4
     :display :flex
     :visibility :hidden
     :opacity 0
@@ -291,9 +295,9 @@
    [:.dialog-wrap
     {:background-color color-white
      :border (str "6px solid " color-main-text)
-     :border-radius :4px
+     :border-radius :8px
      :box-shadow "0 0 8px #ffffff"
-     :width :50%
+     :width :60%
      :min-width :500px
      :max-width :700px
      :padding :1rem
@@ -303,11 +307,45 @@
       :font-size :1.2rem
       :border-bottom (str "2px solid " color-main-text)
       :margin-bottom :8px}]
+    [:.score-index
+     {:display :grid
+      :grid-template-columns "repeat(auto-fit, minmax(10em, 1fr))"
+      :grid-gap :1em
+      :overflow-y :auto
+      :max-height :15em
+      :margin-left :8px
+      :margin-bottom :16px}
+     [:.score-card
+      {:display :flex
+       :flex-direction :column
+       :justify-content :space-around
+       :border (str "3px solid " color-thicker-main)
+       ; :border-radius :8px
+       :background-color color-light-main
+       :min-height :4em
+       :padding :0.2em
+       :text-decoration :none
+       :color color-main-text
+       :text-align :center
+       }
+      [:&:visited
+       {:color :inherit}]
+      [:first-child
+       {:font-weight :bold}]]]
     [:.dialog-desc
      {:font-family :serif
       :font-size :0.9rem
-      :margin-left :1em
+      ; :margin-left :1em
       :margin-bottom :8px}]
+    [:.dialog-error
+     {:margin-left :1em
+      :margin-bottom :8px
+      :padding :0.3em
+      :background-color color-error-bg}
+     [:p
+      {:font-family :serif
+       :font-size :0.9rem
+       :color color-error}]]
     [(garden.selectors/> :.dialog-form :div)
      {:margin-top :8px}]
     [:.form-input
