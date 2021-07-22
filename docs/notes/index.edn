@@ -2,32 +2,46 @@
  {:title "月光(第1楽章)"
   :sub-titles ["Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/moonlight1_1.edn"}
- {:name "悲愴(第2楽章) #6"
+ {:title "悲愴(第2楽章)"
+  :sub-titles ["Lesson6"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pathetique2_6.edn"}
- {:name "悲愴(第2楽章) #7"
+ {:title "悲愴(第2楽章)"
+  :sub-titles ["Lesson7"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pathetique2_7.edn"}
- {:name "悲愴(第2楽章) #9"
+ {:title "悲愴(第2楽章)"
+  :sub-titles ["Lesson9"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pathetique2_9.edn"}
- {:name "めぐり逢い(ギャニオン) #1"
+ {:title "めぐり逢い"
+  :sub-titles ["(ギャニオン)" "Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/gagnon_1.edn"}
- {:name "めぐり逢い(ギャニオン) #2"
+ {:title "めぐり逢い"
+  :sub-titles ["(ギャニオン)" "Lesson2"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/gagnon_2.edn"}
- {:name "海の見える街 #1"
+ {:title "海の見える街"
+  :sub-titles ["Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/kiki_1.edn"}
- {:name "月の光(ドビュッシー) #1"
+ {:title "月の光"
+  :sub-titles ["(ドビュッシー)" "Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/clair_de_lune_1.edn"}
- {:name "月の光(ドビュッシー) #2"
+ {:title "月の光"
+  :sub-titles ["(ドビュッシー)" "Lesson2"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/clair_de_lune_2.edn"}
- {:name "月の光(ドビュッシー) #3"
+ {:title "月の光"
+  :sub-titles ["(ドビュッシー)" "Lesson3"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/clair_de_lune_3.edn"}
- {:name "カノン(パッヘルベル) #1"
+ {:title "カノン"
+  :sub-titles ["(パッヘルベル)" "Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/canon_1.edn"}
- {:name "雨だれ(前奏曲No.15) #1"
+ {:title "雨だれ"
+  :sub-titles ["(前奏曲No.15)" "Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/prelude15_1.edn"}
- {:name "指の練習 #1"
+ {:title "指の練習"
+  :sub-titles ["パターン1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/drill_barabara_1.edn"}
- {:name "指の練習 #2"
+ {:title "指の練習"
+  :sub-titles ["パターン2"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/drill_barabara_2.edn"}
- {:name "指の練習 #3"
+ {:title "指の練習"
+  :sub-titles ["パターン3"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/drill_barabara_3.edn"}
  ]
