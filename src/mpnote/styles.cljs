@@ -330,6 +330,8 @@
        }
       [:&:visited
        {:color :inherit}]
+      [:div
+       {:line-height 1}]
       [:div:first-child
        {:font-weight :bold}]]]
     [:.dialog-desc
