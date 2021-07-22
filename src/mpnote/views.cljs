@@ -276,6 +276,24 @@
           (re-frame/dispatch [::events/load-score-url index-url])
           (js/alert "読み込みたいレッスンメモを指定してくださいな。"))))))
 
+(defn select-note [ev]
+  (.preventDefault ev)
+  (let [url (-> ev .-currentTarget .-href)]
+    (re-frame/dispatch
+      [::events/load-score-url url])))
+
+(defn score-cards [scores]
+  (doall (map-indexed
+           (fn [ix {:keys [name title sub-titles url]}
+                [sub1 sub2] sub-titles]
+             [:a.score-card
+              {:href url
+               :key ix
+               :on-click select-note}
+              [:div (or name title)]
+              (when sub1 [:div sub1])
+              (when sub2 [:div sub2])]) scores)))
+
 (defn score-options [scores]
   (doall (map-indexed
            (fn [ix {:keys [name url]}]
@@ -294,7 +312,15 @@
       [:div.dialog-title
        "レッスンメモ読み込み♬"]
       [:p.dialog-desc
-       "下記の、いずれかの方法でレッスンメモを読み込みます。"]
+       "一覧の中からレッスンメモを選択してください。"]
+      [:div.score-index
+       (if (empty? @score-index)
+         [:div.dialog-error
+          [:p "残念! メモ一覧の読み込みに失敗してますね。"]
+          [:p "ページを開き直してみてくださいな。"]]
+         (score-cards @score-index))]
+      [:p.dialog-desc
+       "自作のレッスンメモを読み込んでもいいですよ。"]
       [:div.dialog-form
        [:div.dialog-item
         [:div.form-label "手元のファイルから選ぶ:"]
@@ -307,13 +333,13 @@
          {:type :text
           :name :from-net
           :size 300}]]
-       (if (not-empty @score-index)
-         [:div.dialog-item
-          [:div.form-label "用意されたメモの中から選ぶ:"]
-          [:select.form-input.input-select
-           {:name :from-index}
-           [:option]
-           (score-options @score-index)]])
+       #_(if (not-empty @score-index)
+           [:div.dialog-item
+            [:div.form-label "用意されたメモの中から選ぶ:"]
+            [:select.form-input.input-select
+             {:name :from-index}
+             [:option]
+             (score-options @score-index)]])
        [:div.dialog-panel
         [:button.btn.ok
          {:on-click submit-dialog
