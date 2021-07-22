@@ -284,15 +284,15 @@
 
 (defn score-cards [scores]
   (doall (map-indexed
-           (fn [ix {:keys [name title sub-titles url]}
-                [sub1 sub2] sub-titles]
-             [:a.score-card
-              {:href url
-               :key ix
-               :on-click select-note}
-              [:div (or name title)]
-              (when sub1 [:div sub1])
-              (when sub2 [:div sub2])]) scores)))
+           (fn [ix {:keys [name title sub-titles url]}]
+             (let [[sub1 sub2] sub-titles]
+               [:a.score-card
+                {:href url
+                 :key ix
+                 :on-click select-note}
+                [:div (or name title)]
+                (when sub1 [:div sub1])
+                (when sub2 [:div sub2])])) scores)))
 
 (defn score-options [scores]
   (doall (map-indexed
