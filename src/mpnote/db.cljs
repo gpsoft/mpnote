@@ -517,11 +517,24 @@
            :max-note-no (apply max all-note-nos)
            :min-note-no (apply min all-note-nos))))
 
+(defn audio?
+  [db]
+  (not= (:audio db) :off))
+
+(defn rotate-audio
+  [audio]
+  (let [m {:off :on
+           :on :left
+           :left :right
+           :right :off}]
+    (audio m)))
+
 (def default-db
   {
    :cur-step-ix 0
    :playing? false
-   :audio? false
+   ; :audio? false
+   :audio :off
    :full-keys? false
    :tempo-bias 0
    :dialog-state :close
