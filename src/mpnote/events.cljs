@@ -69,6 +69,19 @@
            :cur-step-ix step-ix
            :scroll-top (scroll-top top step-ix))))
 
+(defn play-step!
+  [db step-ix]
+  (let [audio? (db/audio? db)
+        audio (:audio db)]
+    (when audio?
+      (let [nos (map (fn [{:keys [note-no]}] note-no)
+                     (filter (fn [{:keys [type hand] :or {type :press}}]
+                               (and (= type :press)
+                                    (or (= audio :on)
+                                        (= audio hand))))
+                             (:notes (nth (get-in db [:score :steps]) step-ix))))]
+        (doall (apply audio/play-notes! nos))))))
+
 (re-frame/reg-event-db
   ::move-step
   (fn-traced
@@ -78,17 +91,11 @@
           finished? (= step-ix last-step-ix)
           step-ix (min last-step-ix (max 0 (+ step-ix (if ff? 1 -1))))
           ; step-ix (if (> step-ix last-step-ix) 0 step-ix)
-          playing? (:playing? db)
-          audio? (:audio? db)
-          ]
+          playing? (:playing? db)]
 
       ;; play notes
       ;; it's an effect, but...
-      (when (and playing? audio? (not finished?))
-        (let [nos (map (fn [{:keys [note-no]}] note-no)
-                       (filter (fn [{type :type :or {type :press}}] (= type :press))
-                               (:notes (nth (get-in db [:score :steps]) step-ix))))]
-          (doall (apply audio/play-notes! nos))))
+      (when (and playing? (not finished?)) (play-step! db step-ix))
 
       (move-to db step-ix))))
 
@@ -105,7 +112,7 @@
                     (if ff? 0 (or (last tops) 0))
                     (if ff? (first candidates) (last candidates)))
           playing? (:playing? db)
-          audio? (:audio? db)
+          audio? (db/audio? db)
           ]
       ;; play notes
       ;; it's an effect, but...
@@ -242,18 +249,19 @@
     (let [full? (:full-keys? db)]
       (assoc db :full-keys? (not full?)))))
 
-(re-frame/reg-event-db
+#_(re-frame/reg-event-db
   ::toggle-audio
   (fn
     [db _]
     (let [audio? (:audio? db)]
-
-      ;; play notes
-      ;; it's an effect, but...
-      (when-not audio?
-        (audio/play-notes! 60))
-
       (assoc db :audio? (not audio?)))))
+
+(re-frame/reg-event-db
+  ::rotate-audio
+  (fn
+    [db _]
+    (let [audio (:audio db)]
+      (assoc db :audio (db/rotate-audio audio)))))
 
 (re-frame/reg-event-db
   ::toggle-dialog
