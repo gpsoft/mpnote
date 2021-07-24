@@ -4,6 +4,7 @@
    [mpnote.styles :as styles]
    [mpnote.subs :as subs]
    [mpnote.events :as events]
+   [mpnote.audio :as audio]
    [mpnote.utils :as u]
    ))
 
@@ -342,7 +343,10 @@
       (score-info)
       [:div.btn.speaker
        {:class (when @audio? :speaker-on)
-        :on-click #(re-frame/dispatch [::events/toggle-audio])}]]
+        :on-click (fn [ev]
+                    (when-not @audio?
+                      (audio/play-notes! 60))  ; play something to activate audio at iOS
+                    (re-frame/dispatch [::events/toggle-audio]))}]]
      [:div.main-container
       (indicator)
       [:div.main-col
