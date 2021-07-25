@@ -95,6 +95,10 @@
      :pointer :cursor}
     [:&.speaker-on
      {:background-image "url('img/speaker-on.png')"}]
+    [:&.speaker-left
+     {:background-image "url('img/speaker-left.png')"}]
+    [:&.speaker-right
+     {:background-image "url('img/speaker-right.png')"}]
     [:&:active
      {:opacity 0.8}]]
    ]

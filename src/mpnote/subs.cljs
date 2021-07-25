@@ -1,6 +1,7 @@
 (ns mpnote.subs
   (:require
-   [re-frame.core :as re-frame]))
+   [re-frame.core :as re-frame]
+   [mpnote.db :as db]))
 
 (re-frame/reg-sub
  ::score-info
@@ -29,7 +30,12 @@
 (re-frame/reg-sub
  ::audio?
  (fn [db]
-   (:audio? db)))
+   (db/audio? db)))
+
+(re-frame/reg-sub
+ ::audio
+ (fn [db]
+   (:audio db)))
 
 (re-frame/reg-sub
  ::dialog-info

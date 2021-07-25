@@ -4,6 +4,7 @@
    [mpnote.styles :as styles]
    [mpnote.subs :as subs]
    [mpnote.events :as events]
+   [mpnote.audio :as audio]
    [mpnote.utils :as u]
    ))
 
@@ -353,7 +354,8 @@
 (defn main-panel []
   (let [info (re-frame/subscribe [::subs/control-panel-info])
         [dragging-control-panel?] @info
-        audio? (re-frame/subscribe [::subs/audio?])]
+        audio? (re-frame/subscribe [::subs/audio?])
+        audio (re-frame/subscribe [::subs/audio])]
     [:div.app
      {:on-mouse-move #(when dragging-control-panel? (control-panel-dragger %))
       :on-mouse-up #(when dragging-control-panel? (control-panel-dragger %))
@@ -367,8 +369,11 @@
       (read-score)
       (score-info)
       [:div.btn.speaker
-       {:class (when @audio? :speaker-on)
-        :on-click #(re-frame/dispatch [::events/toggle-audio])}]]
+       {:class (str "speaker-" (name @audio))
+        :on-click (fn [ev]
+                    (when-not @audio?
+                      (audio/play-notes! 60))  ; play something to activate audio at iOS
+                    (re-frame/dispatch [::events/rotate-audio]))}]]
      [:div.main-container
       (indicator)
       [:div.main-col
