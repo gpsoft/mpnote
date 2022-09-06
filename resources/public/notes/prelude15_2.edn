@@ -107,5 +107,5 @@
   {:notes
    [{:note-no 59, :hand :left, :finger-no 2, :length 1}
     {:note-no 65, :hand :left, :finger-no 1, :length 1}
-    {:note-no 76, :hand :right, :finger-no 5, :length 1}]}
+    {:note-no 77, :hand :right, :finger-no 5, :length 1}]}
   {:notes [{:note-no 56, :hand :left, :finger-no 3, :length 1}]}]}
