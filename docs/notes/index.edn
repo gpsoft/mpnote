@@ -53,4 +53,7 @@
  {:title "指の練習"
   :sub-titles ["パターン3"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/drill_barabara_3.edn"}
+ {:title "ねこふんじゃった"
+  :sub-titles ["変奏曲の出だし"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/nekofun.edn"}
  ]

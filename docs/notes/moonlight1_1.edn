@@ -3,7 +3,8 @@
  :tempo 80
 
  :steps
- [{:bar-top? true
+ [{:bar-top? true, :notes []} {:notes []} {:notes []} {:notes []}
+  {:bar-top? true
    :pedal :on
    :notes
    [{:note-no 37 :hand :left :finger-no 4 :length 12}

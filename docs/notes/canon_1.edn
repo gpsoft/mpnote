@@ -2,7 +2,8 @@
  :url "https://www.youtube.com/watch?v=kc6paGaJ0Fg",
  :tempo 80,
  :steps
- [{:bar-top? true,
+ [{:bar-top? true, :notes []} {:notes []} {:notes []} {:notes []}
+  {:bar-top? true,
    :notes
    [{:note-no 48, :hand :left, :finger-no 2, :length 2}
     {:note-no 55, :hand :left, :finger-no 1, :length 2}
