@@ -31,12 +31,24 @@
   (let [scroll-top (re-frame/subscribe [::subs/scroll-top])]
     (+ (styles/step-top step-ix) @scroll-top)))
 
+(defn click-y [ev]
+  ;; y position (same as top-in-tl) of click event
+  (let [cy (.-clientY ev)
+        bcr (.getBoundingClientRect ev.currentTarget)
+        bcy (.-top bcr)]
+    (- cy bcy)))
+
+(defn jump-step [ev step-ix]
+  (.preventDefault ev)
+  (re-frame/dispatch [::events/jump-step step-ix]))
+
 (defn vnote [{:keys [step-ix hand finger-no]}]
   (let [dummy? (nil? finger-no)
         top (top-in-tl step-ix)
         klass (str (name hand) "-note")]
     [:div
      {:class (str (if dummy? "dummy-note" "note") " " klass)
+      :on-click #(jump-step % step-ix)
       :style {:top top}
       :key step-ix
       }
@@ -52,12 +64,13 @@
 
 (defn key-1
   ([black-white no tl?]
-   [:div.key-1
-    {:class (str (name black-white) "-key" (when (c4? no) " c4-key"))
-     :key no
-     :data-note-no no
-     :on-click #(when (c4? no) (re-frame/dispatch [::events/toggle-full-keys]))}
-    (when tl? (key-1-for-tl no))]))
+   (let [c4-mark? (and (not tl?) (c4? no))]
+     [:div.key-1
+      {:class (str (name black-white) "-key" (when c4-mark? " c4-key"))
+       :key no
+       :data-note-no no
+       :on-click #(when c4-mark? (re-frame/dispatch [::events/toggle-full-keys]))}
+      (when tl? (key-1-for-tl no))])))
 
 (defn keys-3
   [no tl?]
