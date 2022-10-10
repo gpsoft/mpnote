@@ -4,6 +4,7 @@
 
  :steps
  [
+  {:bar-top? true, :notes []} {:notes []} {:notes []} {:notes []}
   {:bar-top? true ;1
    :notes [
            {:note-no 39 :hand :left :finger-no 5 :length 1}
