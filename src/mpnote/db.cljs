@@ -12,7 +12,9 @@
    ;; stepは見た目上の1行に相当。
    ;; tickは時刻を反映。
    :steps
-   [{
+   [
+    {:bar-top? true, :notes []} {:notes []} {:notes []} {:notes []}
+    {
      ;; :step-ix       to be enriched
      ;; :tickstamp     to be enriched
      ;; :bar-top?      小節の先頭か?
