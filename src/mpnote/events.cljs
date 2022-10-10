@@ -124,6 +124,12 @@
 
       (move-to db step-ix))))
 
+(re-frame/reg-event-db
+  ::jump-step
+  (fn-traced
+    [db [_ step-ix]]
+    (move-to db step-ix)))
+
 (comment
   (nth [1 2 3] 0)
   (nth [1 2 3] -1)
