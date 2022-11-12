@@ -44,6 +44,9 @@
  {:title "雨だれ"
   :sub-titles ["(前奏曲No.15)" "Lesson3"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/prelude15_3.edn"}
+ {:title "亡き王女のための"
+  :sub-titles ["パヴァーヌ" "(編曲)"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pavane.edn"}
  {:title "指の練習"
   :sub-titles ["パターン1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/drill_barabara_1.edn"}
