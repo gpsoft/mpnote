@@ -242,6 +242,7 @@
 
 (defn control-panel []
   (let [playing? (re-frame/subscribe [::subs/playing?])
+        tempo (re-frame/subscribe [::subs/tempo])
         info (re-frame/subscribe [::subs/control-panel-info])
         [dragging-control-panel? control-panel-pos] @info
         [control-panel-x control-panel-y] control-panel-pos]
@@ -266,6 +267,8 @@
         {:href :#
          :on-click #(play-speed % true)}
         ""]
+       [:span.play-speed-label
+        @tempo]
        [:a.btn.play-slower
         {:href :#
          :on-click #(play-speed % false)}

@@ -531,6 +531,12 @@
            :right :off}]
     (audio m)))
 
+(defn calclated-tempo
+  ([db]
+   (let [tempo (get-in db [:score :tempo] 120)
+         tempo-bias (:tempo-bias db)]
+     (+ tempo tempo-bias))))
+
 (def default-db
   {
    :cur-step-ix 0
