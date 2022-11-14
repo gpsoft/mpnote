@@ -261,24 +261,36 @@
      {:background-image "url('img/pause.png')"}]
     [:&.play-faster
      {:background-image "url('img/faster.png')"
-      :top :-10px}]
+      :top :-20px
+      :left :6px}]
     [:&.play-slower
      {:background-image "url('img/slower.png')"
-      :bottom :-10px}]
+      :bottom :-20px
+      :left :6px}]
     ]
    [:.player
     {:display :flex
-     :align-items :flex-start
-     :width :120px}
+     ; :align-items :flex-start
+     ; :width :120px
+     }
     [:.play-speed-panel
      {:position :relative
+      :width :64px
       :height :64px}
      [:.btn
       {:position :absolute
        :width :52px
        :height :40px
        :background-color color-thicker-main
-       :border-radius :50%}]]]
+       :border-radius :50%}]
+     [:.play-speed-label
+      {:display :inline-block
+       :width :100%
+       :line-height :24px
+       :margin-top :20px
+       :background-color color-lighter-main
+       :font-size :1.2em
+       :text-align :center}]]]
    #_[(garden.selectors/> :.player :div)
     {:display :div}]]
   [:.dialog-overlay

@@ -88,3 +88,8 @@
       (->> steps
            (map #(my-note note-no %))
            (filter some?)))))
+
+(re-frame/reg-sub
+  ::tempo
+  (fn [db]
+    (db/calclated-tempo db)))
