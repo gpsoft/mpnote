@@ -9,13 +9,20 @@
   {:bar-top? true,
    :notes
    [{:note-no 42, :hand :left, :finger-no 5, :length 4}
+    {:note-no 44, :hand :left, :finger-no 4, :length 1}
     {:note-no 54, :hand :left, :finger-no 1, :length 4}
     {:note-no 60, :hand :right, :finger-no 1, :length 4}
     {:note-no 68, :hand :right, :finger-no 4, :length 1}
     {:note-no 72, :hand :right, :finger-no 5, :length 4}]}
-  {:notes [{:note-no 68, :hand :right, :finger-no 3, :length 1}]}
-  {:notes [{:note-no 68, :hand :right, :finger-no 3, :length 1}]}
-  {:notes [{:note-no 68, :hand :right, :finger-no 3, :length 1}]}
+  {:notes
+   [{:note-no 44, :hand :left, :finger-no 4, :length 1}
+    {:note-no 68, :hand :right, :finger-no 3, :length 1}]}
+  {:notes
+   [{:note-no 44, :hand :left, :finger-no 4, :length 1}
+    {:note-no 68, :hand :right, :finger-no 3, :length 1}]}
+  {:notes
+   [{:note-no 44, :hand :left, :finger-no 4, :length 1}
+    {:note-no 68, :hand :right, :finger-no 3, :length 1}]}
   {:notes
    [{:note-no 40, :hand :left, :finger-no 5, :length 2}
     {:note-no 44, :hand :left, :finger-no 2, :length 4}
