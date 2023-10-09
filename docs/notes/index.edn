@@ -14,6 +14,9 @@
  {:title "悲愴(第2楽章)"
   :sub-titles ["Lesson10"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pathetique2_10.edn"}
+ {:title "亡き王女のためのパヴァーヌ – Lesson1"
+  :sub-titles ["Lesson1"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pavane_01.edn"}
  {:title "別れの曲"
   :sub-titles ["Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/farewell_1.edn"}
