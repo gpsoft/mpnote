@@ -17,6 +17,9 @@
  {:title "亡き王女のためのパヴァーヌ – Lesson1"
   :sub-titles ["Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pavane_01.edn"}
+ {:title "亡き王女のためのパヴァーヌ – Lesson2"
+  :sub-titles ["Lesson2"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pavane_02.edn"}
  {:title "別れの曲"
   :sub-titles ["Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/farewell_1.edn"}
