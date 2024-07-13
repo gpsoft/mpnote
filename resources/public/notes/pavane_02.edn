@@ -535,7 +535,7 @@
   {:bar-top? true, :notes []}
   {:notes
    [{:note-no 36, :hand :left, :finger-no 5, :length 1}
-    {:note-no 44, :hand :left, :finger-no 2, :length 1}
+    {:note-no 43, :hand :left, :finger-no 2, :length 1}
     {:note-no 52, :hand :right, :finger-no 1, :length 1}
     {:note-no 58, :hand :right, :finger-no 2, :length 1}
     {:note-no 62, :hand :right, :finger-no 4, :length 1}]}
@@ -547,7 +547,7 @@
     {:note-no 64, :hand :right, :finger-no 5, :length 1}]}
   {:notes
    [{:note-no 40, :hand :left, :finger-no 5, :length 1}
-    {:note-no 48, :hand :left, :finger-no 2, :length 1}
+    {:note-no 47, :hand :left, :finger-no 2, :length 1}
     {:note-no 56, :hand :right, :finger-no 1, :length 1}
     {:note-no 62, :hand :right, :finger-no 3, :length 1}
     {:note-no 66, :hand :right, :finger-no 5, :length 1}]}
