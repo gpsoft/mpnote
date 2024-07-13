@@ -2,6 +2,12 @@
  {:title "月光(第1楽章)"
   :sub-titles ["Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/moonlight1_1.edn"}
+ {:title "月光(第2楽章)"
+  :sub-titles ["Lesson1"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/moonlight2_1.edn"}
+ {:title "月光(第2楽章)"
+  :sub-titles ["Lesson2"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/moonlight2_2.edn"}
  {:title "悲愴(第2楽章)"
   :sub-titles ["Lesson6"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pathetique2_6.edn"}
