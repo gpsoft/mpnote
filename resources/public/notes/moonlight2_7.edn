@@ -1,0 +1,84 @@
+{:title "月光 第2楽章 Lesson7",
+ :url "https://www.youtube.com/watch?v=FglmXpYwkgE",
+ :tempo 120,
+ :steps
+ [{:bar-top? true, :notes []}
+  {:notes []}
+  {:notes
+   [{:note-no 61, :hand :right, :finger-no 1, :length 1}
+    {:note-no 73, :hand :right, :finger-no 5, :length 1}]}
+  {:notes []}
+  {:bar-top? true,
+   :notes
+   [{:note-no 46, :hand :left, :finger-no 2, :length 1}
+    {:note-no 49, :hand :left, :finger-no 1, :length 1}]}
+  {:notes []}
+  {:notes []}
+  {:notes []}
+  {:notes
+   [{:note-no 54, :hand :right, :finger-no 1, :length 1}
+    {:note-no 66, :hand :right, :finger-no 4, :length 1}]}
+  {:notes []}
+  {:bar-top? true,
+   :notes [{:note-no 44, :hand :left, :finger-no 3, :length 1}]}
+  {:notes []}
+  {:notes []}
+  {:notes []}
+  {:notes
+   [{:note-no 53, :hand :right, :finger-no 1, :length 1}
+    {:note-no 65, :hand :right, :finger-no 5, :length 1}]}
+  {:notes [{:note-no 43, :hand :left, :finger-no 4, :length 1}]}
+  {:bar-top? true, :notes []}
+  {:notes []}
+  {:notes []}
+  {:notes []}
+  {:notes
+   [{:note-no 52, :hand :right, :finger-no 1, :length 1}
+    {:note-no 64, :hand :right, :finger-no 4, :length 1}]}
+  {:notes []}
+  {:bar-top? true,
+   :notes [{:note-no 44, :hand :left, :finger-no 3, :length 1}]}
+  {:notes []}
+  {:notes []}
+  {:notes []}
+  {:notes
+   [{:note-no 53, :hand :right, :finger-no 1, :length 1}
+    {:note-no 65, :hand :right, :finger-no 5, :length 1}]}
+  {:notes []}
+  {:bar-top? true,
+   :notes
+   [{:note-no 46, :hand :left, :finger-no 2, :length 1}
+    {:note-no 49, :hand :left, :finger-no 1, :length 1}]}
+  {:notes []}
+  {:notes []}
+  {:notes []}
+  {:notes
+   [{:note-no 54, :hand :right, :finger-no 1, :length 1}
+    {:note-no 66, :hand :right, :finger-no 4, :length 1}]}
+  {:notes []}
+  {:bar-top? true,
+   :notes [{:note-no 44, :hand :left, :finger-no 31, :length 1}]}
+  {:notes []}
+  {:notes []}
+  {:notes []}
+  {:notes
+   [{:note-no 53, :hand :right, :finger-no 1, :length 1}
+    {:note-no 65, :hand :right, :finger-no 5, :length 1}]}
+  {:notes []}
+  {:bar-top? true,
+   :notes [{:note-no 32, :hand :left, :finger-no 5, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 54, :hand :right, :finger-no 1, :length 1}
+    {:note-no 66, :hand :right, :finger-no 4, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 44, :hand :left, :finger-no 1, :length 1}
+    {:note-no 48, :hand :right, :finger-no 1, :length 1}
+    {:note-no 60, :hand :right, :finger-no 5, :length 1}]}
+  {:notes []}
+  {:bar-top? true,
+   :notes
+   [{:note-no 37, :hand :left, :finger-no 3, :length 1}
+    {:note-no 49, :hand :right, :finger-no 1, :length 1}
+    {:note-no 61, :hand :right, :finger-no 5, :length 1}]}]}
