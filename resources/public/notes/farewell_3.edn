@@ -140,20 +140,4 @@
     {:note-no 66, :hand :right, :finger-no 1, :length 1}
     {:note-no 70, :hand :right, :finger-no 2, :length 1}
     {:note-no 78, :hand :right, :finger-no 5, :length 1}]}
-  {:bar-top? true,
-   :notes
-   [{:note-no 47, :hand :left, :finger-no 5, :length 1}
-    {:note-no 52, :hand :left, :finger-no 3, :length 1}
-    {:note-no 54, :hand :left, :finger-no 2, :length 1}
-    {:note-no 59, :hand :left, :finger-no 1, :length 1}
-    {:note-no 68, :hand :right, :finger-no 1, :length 1}
-    {:note-no 76, :hand :right, :finger-no 4, :length 1}
-    {:note-no 80, :hand :right, :finger-no 5, :length 1}]}
-  {:notes [{:note-no 71, :hand :right, :finger-no 2, :length 1}]}
-  {:notes [{:note-no 68, :hand :right, :finger-no 1, :length 1}]}
-  {:notes [{:note-no 71, :hand :right, :finger-no 2, :length 1}]}
-  {:notes []}
-  {:notes []}
-  {:notes []}
-  {:notes []}
   {:bar-top? true, :notes []}]}
