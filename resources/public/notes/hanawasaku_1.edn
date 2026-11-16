@@ -1,0 +1,203 @@
+{:title "花は咲く",
+ :url nil,
+ :tempo 120,
+ :steps
+ [{:bar-top? true, :notes []}
+  {:notes []}
+  {:notes []}
+  {:notes []}
+  {:notes []}
+  {:notes []}
+  {:notes [{:note-no 84, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 82, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 65, :hand :left, :finger-no 0, :length 1}
+    {:note-no 72, :hand :left, :finger-no 0, :length 1}
+    {:note-no 81, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 84, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 89, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 67, :hand :left, :finger-no 0, :length 1}
+    {:note-no 73, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 91, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 94, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 93, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 69, :hand :left, :finger-no 0, :length 1}
+    {:note-no 72, :hand :left, :finger-no 0, :length 1}
+    {:note-no 89, :hand :right, :finger-no 0, :length 1}
+    {:note-no 93, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes [{:note-no 88, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 65, :hand :left, :finger-no 0, :length 1}
+    {:note-no 72, :hand :left, :finger-no 0, :length 1}
+    {:note-no 87, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes [{:note-no 77, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 79, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 58, :hand :left, :finger-no 0, :length 1}
+    {:note-no 65, :hand :left, :finger-no 0, :length 1}
+    {:note-no 81, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 77, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 57, :hand :left, :finger-no 0, :length 1}
+    {:note-no 65, :hand :left, :finger-no 0, :length 1}
+    {:note-no 77, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 72, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 55, :hand :left, :finger-no 0, :length 1}
+    {:note-no 65, :hand :left, :finger-no 0, :length 1}
+    {:note-no 72, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 60, :hand :left, :finger-no 0, :length 1}
+    {:note-no 65, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 70, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 69, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 57, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 60, :hand :left, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 58, :hand :left, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes [{:note-no 60, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 58, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 41, :hand :left, :finger-no 0, :length 1}
+    {:note-no 57, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 48, :hand :left, :finger-no 0, :length 1}
+    {:note-no 60, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 65, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 49, :hand :left, :finger-no 0, :length 1}
+    {:note-no 58, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 67, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 70, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 69, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 69, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 60, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 64, :hand :left, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 63, :hand :left, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes [{:note-no 65, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 67, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 46, :hand :left, :finger-no 0, :length 1}
+    {:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 69, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 65, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 45, :hand :left, :finger-no 0, :length 1}
+    {:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 65, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 60, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 43, :hand :left, :finger-no 0, :length 1}
+    {:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 60, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 48, :hand :left, :finger-no 0, :length 1}
+    {:note-no 53, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 58, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 41, :hand :left, :finger-no 0, :length 1}
+    {:note-no 57, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 48, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 53, :hand :left, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 58, :hand :left, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes [{:note-no 60, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 58, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 41, :hand :left, :finger-no 0, :length 1}
+    {:note-no 57, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 48, :hand :left, :finger-no 0, :length 1}
+    {:note-no 60, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 65, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 49, :hand :left, :finger-no 0, :length 1}
+    {:note-no 58, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 67, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 70, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 69, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 48, :hand :left, :finger-no 0, :length 1}
+    {:note-no 69, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 57, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 60, :hand :left, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 47, :hand :left, :finger-no 0, :length 1}
+    {:note-no 57, :hand :left, :finger-no 0, :length 1}
+    {:note-no 62, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes [{:note-no 65, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 67, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 46, :hand :left, :finger-no 0, :length 1}
+    {:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 69, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 65, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 45, :hand :left, :finger-no 0, :length 1}
+    {:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 65, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 60, :hand :right, :finger-no 0, :length 1}]}
+  {:notes
+   [{:note-no 43, :hand :left, :finger-no 0, :length 1}
+    {:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 60, :hand :right, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 48, :hand :left, :finger-no 0, :length 1}
+    {:note-no 53, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 58, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true,
+   :notes
+   [{:note-no 41, :hand :left, :finger-no 0, :length 1}
+    {:note-no 57, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 48, :hand :left, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 53, :hand :left, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes
+   [{:note-no 53, :hand :left, :finger-no 0, :length 1}
+    {:note-no 58, :hand :left, :finger-no 0, :length 1}]}
+  {:notes []}
+  {:notes [{:note-no 65, :hand :right, :finger-no 0, :length 1}]}
+  {:notes [{:note-no 67, :hand :right, :finger-no 0, :length 1}]}
+  {:bar-top? true, :notes []}]}
