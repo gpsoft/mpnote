@@ -38,6 +38,18 @@
  {:title "花は咲く – Lesson1"
   :sub-titles ["Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/hanawasaku_1.edn"}
+ {:title "花は咲く – Lesson2"
+  :sub-titles ["Lesson2"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/hanawasaku_2.edn"}
+ {:title "花は咲く – Lesson3"
+  :sub-titles ["Lesson3"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/hanawasaku_3.edn"}
+ {:title "花は咲く – Lesson4"
+  :sub-titles ["Lesson4"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/hanawasaku_4.edn"}
+ {:title "花は咲く – Lesson5"
+  :sub-titles ["Lesson5"]
+  :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/hanawasaku_5.edn"}
  {:title "亡き王女のためのパヴァーヌ – Lesson1"
   :sub-titles ["Lesson1"]
   :url "https://raw.githubusercontent.com/gpsoft/mpnote/master/resources/public/notes/pavane_01.edn"}
